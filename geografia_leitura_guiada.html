@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leitura Guiada · Atlas do Explorador · Geografia 9º ano · Caps. 10 e 11</title>
+<style>
+  :root{
+    --papel:#f3e9d6; --papel2:#e8dabd; --papel3:#ded0af;
+    --tinta:#3a2f1e; --tinta2:#5c4a30;
+    --verde:#4b7a52; --verde-esc:#375c3d; --verde-cl:#e3efe0;
+    --azul:#2f6d8c; --vermelho:#b23a2e; --amarelo:#ffe27a;
+    --linha:#c9b78e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papel);color:var(--tinta);
+    font-family:"Segoe UI",system-ui,sans-serif;font-size:18px;line-height:1.65}
+  .wrap{max-width:820px;margin:0 auto;padding:0 16px 80px}
+  header.top{background:linear-gradient(135deg,var(--verde-esc),var(--verde));
+    color:#fdf7e8;padding:26px 20px;border-bottom:6px solid var(--tinta);
+    background-image:radial-gradient(circle at 12% 30%,rgba(255,255,255,.08) 0 2px,transparent 3px),
+    radial-gradient(circle at 80% 60%,rgba(255,255,255,.06) 0 2px,transparent 3px);}
+  header.top .inner{max-width:820px;margin:0 auto}
+  .badge{display:inline-block;background:var(--amarelo);color:var(--tinta);
+    font-weight:700;padding:4px 12px;border-radius:20px;font-size:14px;letter-spacing:.5px}
+  header.top h1{font-family:Georgia,"Times New Roman",serif;margin:12px 0 4px;font-size:30px}
+  header.top p{margin:0;opacity:.95;font-size:16px}
+  .compass{font-size:30px}
+  .painel{background:var(--papel2);border:2px dashed var(--linha);border-radius:12px;
+    padding:12px 16px;margin:20px 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:15px}
+  .painel b{color:var(--tinta)}
+  .painel button{font:inherit;font-size:14px;cursor:pointer;border:2px solid var(--tinta2);
+    background:var(--papel);color:var(--tinta);border-radius:8px;padding:6px 12px}
+  .painel button:hover{background:var(--papel3)}
+  .progress{height:14px;background:var(--papel3);border-radius:10px;overflow:hidden;margin:6px 0 26px;border:1px solid var(--linha)}
+  .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--verde),var(--azul));width:0;transition:.4s}
+  .bloco{background:#fbf5e7;border:1px solid var(--linha);border-left:8px solid var(--verde);
+    border-radius:10px;padding:20px 22px;margin:0 0 22px;box-shadow:2px 3px 0 rgba(58,47,30,.08)}
+  .bloco.travado{opacity:.55;filter:grayscale(.3)}
+  .bloco h2{font-family:Georgia,serif;color:var(--verde-esc);margin:0 0 4px;font-size:23px;display:flex;gap:10px;align-items:center}
+  .selo{background:var(--verde);color:#fff;font-size:13px;font-weight:700;border-radius:6px;padding:2px 9px}
+  .bloco .lock{float:right;font-size:15px;color:var(--vermelho);font-weight:700}
+  .texto p{margin:10px 0}
+  .destaque{background:var(--amarelo);padding:1px 5px;border-radius:4px;font-weight:600}
+  .perg{margin:14px 0 4px;font-weight:600;color:var(--tinta)}
+  textarea{width:100%;min-height:64px;font:inherit;font-size:16px;padding:10px;
+    border:2px solid var(--linha);border-radius:8px;background:#fffdf6;resize:vertical}
+  textarea:focus{outline:none;border-color:var(--verde)}
+  .btn{font:inherit;cursor:pointer;border:none;border-radius:9px;padding:11px 20px;font-weight:700;font-size:16px}
+  .btn-verde{background:var(--verde);color:#fff}
+  .btn-verde:disabled{background:#b7bcae;cursor:not-allowed}
+  .modelo{background:var(--verde-cl);border:1px solid var(--verde);border-radius:9px;
+    padding:12px 16px;margin:14px 0 0;display:none}
+  .modelo.show{display:block}
+  .modelo h4{margin:0 0 6px;color:var(--verde-esc)}
+  .modelo .ma{margin:8px 0}
+  .autoav{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .autoav span{font-weight:600}
+  .pill{border:2px solid var(--tinta2);background:var(--papel);border-radius:20px;padding:5px 14px;cursor:pointer;font-size:15px}
+  .pill.sel-ok{background:var(--verde);color:#fff;border-color:var(--verde)}
+  .pill.sel-rev{background:var(--vermelho);color:#fff;border-color:var(--vermelho)}
+  .postit{background:var(--amarelo);border-radius:4px;padding:12px 16px;margin:14px 0;
+    box-shadow:2px 2px 5px rgba(0,0,0,.15);transform:rotate(-.6deg);font-size:16px}
+  .postit b{display:block;margin-bottom:3px}
+  .final{background:#fff3f1;border:2px solid var(--vermelho);border-radius:12px;padding:20px 22px;margin-top:10px}
+  .final h2{color:var(--vermelho);font-family:Georgia,serif;margin-top:0}
+  .final ol{margin:6px 0 0;padding-left:22px}
+  .final li{margin:9px 0}
+  .cobertura{background:var(--papel2);border:1px solid var(--linha);border-radius:12px;padding:16px 20px;margin-top:24px}
+  table{width:100%;border-collapse:collapse;font-size:15px;margin-top:8px}
+  th,td{border:1px solid var(--linha);padding:7px 9px;text-align:left}
+  th{background:var(--verde);color:#fff}
+  .concluido{background:var(--verde);color:#fff;text-align:center;border-radius:12px;padding:18px;margin-top:20px;display:none;font-size:19px;font-weight:700}
+  .concluido.show{display:block}
+  .rota{text-align:center;color:var(--tinta2);font-style:italic;margin:8px 0 0;font-size:15px}
+  a.nav{color:var(--azul);font-weight:700}
+</style>
+</head>
+<body>
+<header class="top"><div class="inner">
+  <span class="badge">🧭 ATLAS DO EXPLORADOR · GEOGRAFIA · 9º ANO</span>
+  <h1><span class="compass">🧭</span> Leitura Guiada — Diário de Bordo</h1>
+  <p>Expedição pela <b>Unidade 4</b> · Cap. 10 (Europa) e Cap. 11 (Ásia e Oceania)</p>
+</div></header>
+
+<div class="wrap">
+  <p class="rota">Explorador(a), cada trecho do mapa só abre depois que você registra suas anotações no anterior. Escreva com suas palavras — é assim que a informação principal fica gravada no seu diário. ✍️</p>
+
+  <div class="painel">
+    <b>💾 Diário salvo automaticamente.</b>
+    <span id="salvo">—</span>
+    <button onclick="exportar()">📥 Exportar</button>
+    <button onclick="document.getElementById('imp').click()">📤 Importar</button>
+    <input type="file" id="imp" accept="application/json" style="display:none" onchange="importar(event)">
+    <button onclick="zerar()">🗑️ Zerar tudo</button>
+  </div>
+  <div class="progress"><i id="barra"></i></div>
+
+  <div id="blocos"></div>
+
+  <div class="concluido" id="concluido">🎉 Expedição concluída! Você registrou todos os trechos do mapa. Bons estudos para a prova!</div>
+
+  <div class="cobertura">
+    <h3 style="margin-top:0">🗺️ Mapa de cobertura — Tópico → Bloco</h3>
+    <table>
+      <tr><th>Tópico da prova</th><th>Bloco</th></tr>
+      <tr><td>Guerra Fria e divisão da Europa (Oriental x Ocidental)</td><td>1</td></tr>
+      <tr><td>Plano Churchill-Marshall</td><td>2</td></tr>
+      <tr><td>Fim da Guerra Fria, integração e discriminação do Leste</td><td>3</td></tr>
+      <tr><td>Envelhecimento demográfico e previdência na Europa</td><td>4</td></tr>
+      <tr><td>Políticas natalistas e redução populacional</td><td>5</td></tr>
+      <tr><td>Crise migratória, refugiados, xenofobia e Schengen</td><td>6</td></tr>
+      <tr><td>Ásia e Oceania: riqueza e pobreza / causas da pobreza</td><td>7</td></tr>
+      <tr><td>Castas na Índia</td><td>8</td></tr>
+      <tr><td>Aborígenes na Austrália</td><td>9</td></tr>
+      <tr><td>Contrastes regionais e exploração do trabalho (trabalho infantil)</td><td>10</td></tr>
+      <tr><td>Desafios demográficos: China (filho único) e Índia</td><td>11</td></tr>
+    </table>
+  </div>
+
+  <p class="rota" style="margin-top:24px">➡️ Próxima parada da expedição: <a class="nav" href="geografia_quiz.html">Quiz Interativo</a> · <a class="nav" href="index.html">Voltar ao índice</a></p>
+</div>
+
+<script>
+const KEY='geo9_caps1011_leitura';
+const blocos=[
+{
+ t:"A Europa partida pela Guerra Fria",
+ texto:`<p>Depois da Segunda Guerra Mundial, o mundo ficou dividido em dois grandes lados que disputavam poder e influência — foi a chamada <span class="destaque">bipolarização</span>. De um lado, o bloco <b>capitalista</b>, liderado pelos Estados Unidos; do outro, o bloco <b>socialista</b>, liderado pela União Soviética. Essa disputa, sem guerra direta entre os dois, ficou conhecida como <b>Guerra Fria</b> e durou até dezembro de 1991, quando a União Soviética entrou em colapso.</p>
+ <p>A Europa foi partida ao meio por essa disputa. A <b>Europa Ocidental</b> (oeste) seguiu o capitalismo, com livre iniciativa e forte apoio dos Estados Unidos. A <b>Europa Oriental</b> (leste) seguiu o socialismo, com a economia controlada pelo Estado, pouca concorrência e pouca inovação tecnológica.</p>
+ <p>Duas palavras aparecem muito nesse assunto: <span class="destaque">hegemônico</span> (quem tem autoridade que se sobrepõe aos outros, quem manda) e <span class="destaque">antagônico</span> (lados opostos, com interesses diferentes). Os dois blocos eram, ao mesmo tempo, hegemônicos em suas áreas e antagônicos entre si.</p>`,
+ perguntas:[
+  {q:"O que foi a bipolarização da Guerra Fria? Quais eram os dois blocos e quem liderava cada um?",
+   modelo:"Foi a divisão do mundo em dois blocos opostos após a 2ª Guerra: o capitalista, liderado pelos Estados Unidos, e o socialista, liderado pela União Soviética. Eles disputavam poder e influência sem entrar em guerra direta."},
+  {q:"Explique com suas palavras a diferença entre Europa Ocidental e Europa Oriental nesse período.",
+   modelo:"A Europa Ocidental era capitalista, com livre iniciativa e apoio dos EUA. A Europa Oriental era socialista, com a economia controlada pelo Estado, pouca concorrência e menos inovação tecnológica."},
+  {q:"O que significam as palavras 'hegemônico' e 'antagônico'?",
+   modelo:"Hegemônico é quem exerce autoridade que se sobrepõe aos outros (quem domina). Antagônico são lados opostos, com interesses divergentes."}
+ ]
+},
+{
+ t:"Plano Churchill-Marshall",
+ texto:`<p>Logo depois da guerra, os países da Europa estavam destruídos. Os Estados Unidos, junto com a Inglaterra, criaram um plano de ajuda financeira para reconstruir a Europa: o <b>Plano Churchill-Marshall</b> (também chamado de Programa de Reconstrução Europeia). Entre 1947 e 1951, mais de 10 bilhões de dólares foram enviados aos países europeus.</p>
+ <p>Dois fatores explicam por que os EUA fizeram isso: o <span class="destaque">medo do avanço do socialismo</span> na Europa e a <span class="destaque">impossibilidade das potências europeias continuarem explorando suas colônias</span> na África e na Ásia (que estavam se tornando independentes).</p>
+ <p>Aqui vem a "pegadinha": o plano parecia só uma ajuda, mas também <b>beneficiou a própria economia dos Estados Unidos</b>. Boa parte do dinheiro voltava para lá, porque os europeus usavam esses recursos para comprar produtos, máquinas e alimentos fabricados pelas indústrias americanas. Além disso, o plano ajudou a criar na Europa um capitalismo de <b>consumo em massa</b>, igual ao modelo dos EUA.</p>`,
+ perguntas:[
+  {q:"O que foi o Plano Churchill-Marshall e qual era seu objetivo principal?",
+   modelo:"Foi um programa de ajuda financeira dos EUA (com a Inglaterra) para reconstruir a Europa arrasada pela 2ª Guerra, enviando mais de 10 bilhões de dólares entre 1947 e 1951."},
+  {q:"Quais foram os dois fatores que levaram os Estados Unidos a criar esse plano?",
+   modelo:"O medo do avanço do socialismo na Europa e a impossibilidade das potências europeias continuarem explorando suas colônias na África e na Ásia."},
+  {q:"De que forma o plano também ajudava a economia dos próprios Estados Unidos?",
+   modelo:"Porque os europeus usavam o dinheiro recebido para comprar produtos, máquinas e alimentos das indústrias americanas, e o plano criava na Europa um consumo em massa no modelo dos EUA."}
+ ]
+},
+{
+ t:"O fim da Guerra Fria e a discriminação do Leste",
+ texto:`<p>No início dos anos 1990, com o fim da Guerra Fria, <b>todos os países europeus se tornaram capitalistas</b>. Mas o Leste, que tinha vivido décadas sob o socialismo, estava bem mais atrasado economicamente que o Oeste. Formou-se um verdadeiro <span class="destaque">abismo socioeconômico</span> entre as duas regiões.</p>
+ <p>As indústrias da Europa Ocidental aproveitaram para explorar o Leste: mão de obra barata, matérias-primas e um grande mercado consumidor. Muitas famílias do Leste migraram para o Oeste em busca de melhores oportunidades — e passaram a ser <b>discriminadas, tratadas como cidadãos de segunda classe</b>.</p>
+ <p>O melhor exemplo é a <b>Alemanha</b>: durante a Guerra Fria, ela foi dividida em Alemanha Ocidental (capitalista) e Alemanha Oriental (socialista), separadas pelo <b>Muro de Berlim</b>. A construção do muro (1961) simbolizou a separação do mundo em dois blocos; sua queda (1989) e a reunificação da Alemanha (outubro de 1990) simbolizaram o fim dessa divisão. Mesmo assim, até hoje existem diferenças e discriminação entre alemães do leste e do oeste.</p>`,
+ perguntas:[
+  {q:"O que aconteceu com as diferenças entre Leste e Oeste europeus depois do fim da Guerra Fria?",
+   modelo:"Todos viraram capitalistas, mas o Leste estava muito mais atrasado, formando um abismo socioeconômico. As indústrias do Oeste passaram a explorar o Leste (mão de obra barata e mercado consumidor)."},
+  {q:"Por que os europeus do Leste passaram a ser discriminados ao migrar para o Oeste?",
+   modelo:"Por virem de países ex-socialistas, mais pobres e atrasados, eram tratados como cidadãos de segunda classe, o que atrapalhou a integração da Europa."},
+  {q:"Por que a construção e a demolição do Muro de Berlim simbolizaram o contexto da Guerra Fria?",
+   modelo:"A construção do muro simbolizou a divisão do mundo em dois blocos opostos (capitalista e socialista); sua queda e a reunificação da Alemanha simbolizaram o fim dessa divisão."}
+ ]
+},
+{
+ t:"O envelhecimento da Europa e a previdência",
+ texto:`<p>Hoje a Europa vive o chamado <span class="destaque">envelhecimento demográfico</span> (ou envelhecimento populacional). Isso acontece por causa de duas mudanças ao mesmo tempo: a <b>redução do número de jovens</b> (menos filhos por mulher, ou seja, queda da fecundidade) e o <b>aumento do número de idosos</b> (as pessoas vivem mais, por causa da boa alimentação, saúde e saneamento). Muitos europeus chegam a passar dos 80 anos.</p>
+ <p>Isso é, ao mesmo tempo, uma vitória e um desafio. O desafio é: com cada vez menos jovens trabalhando e cada vez mais idosos aposentados, <b>quem vai pagar as aposentadorias e o sistema de saúde?</b> Esse problema é chamado de "déficit previdenciário".</p>
+ <p>Para tentar resolver, muitos países estão fazendo <b>reformas na previdência</b>: aumentar a idade mínima para se aposentar e o tempo mínimo de contribuição. Hoje a idade mínima varia entre 60 e 65 anos; segundo estudos do IPEA baseados na OCDE, até 2030 ela deve subir para <b>67 anos</b> na União Europeia.</p>`,
+ perguntas:[
+  {q:"Quais são as duas principais causas do envelhecimento da população europeia?",
+   modelo:"A redução do número de jovens (queda da fecundidade, menos filhos por mulher) e o aumento do número de idosos (maior expectativa de vida)."},
+  {q:"Por que o envelhecimento gera um problema para o sistema de aposentadorias?",
+   modelo:"Porque há cada vez menos jovens trabalhando e contribuindo e cada vez mais idosos aposentados, ficando difícil pagar as aposentadorias e o sistema de saúde."},
+  {q:"Que tipo de reforma os países europeus estão fazendo na previdência?",
+   modelo:"Estão aumentando a idade mínima para se aposentar (rumo aos 67 anos até 2030) e o tempo mínimo de contribuição."}
+ ]
+},
+{
+ t:"Políticas natalistas e redução da população",
+ texto:`<p>Além de reformar a previdência, os governos europeus tentam incentivar as pessoas a terem mais filhos. Essas medidas são chamadas de <span class="destaque">políticas natalistas</span>. Exemplos: aumentar o tempo da <b>licença-maternidade</b>, criar a <b>licença-paternidade</b> e oferecer <b>subsídios</b> (ajudas em dinheiro) para os custos de criar os filhos.</p>
+ <p>Mesmo assim, essas políticas nem sempre funcionam. Os jovens adultos europeus estão adiando a primeira gravidez e evitando ter o segundo filho por causa de mudanças sociais: a desvalorização da vida familiar, a maior participação das mulheres em carreiras profissionais, a forte concorrência no mercado de trabalho e o alto custo de vida.</p>
+ <p>Quando a taxa de fecundidade fica abaixo de <b>2,1 filhos por mulher</b> durante muitos anos, a população começa a diminuir — é a <span class="destaque">redução populacional</span> (crescimento vegetativo negativo). Isso leva à falta de mão de obra, à queda do consumo e à estagnação da economia. Por isso, a outra saída para repor a população é o <b>aumento da imigração</b>.</p>`,
+ perguntas:[
+  {q:"O que são políticas natalistas? Dê dois exemplos.",
+   modelo:"São medidas para incentivar as pessoas a terem mais filhos, como aumentar a licença-maternidade, criar a licença-paternidade e dar subsídios (ajuda em dinheiro) para criar os filhos."},
+  {q:"Por que essas políticas nem sempre dão certo? Cite motivos.",
+   modelo:"Porque os jovens adiam a gravidez por causa da desvalorização da vida familiar, da participação das mulheres em carreiras, da concorrência no trabalho e do alto custo de vida."},
+  {q:"O que acontece quando a taxa de fecundidade fica abaixo de 2,1 filhos por mulher por muito tempo?",
+   modelo:"A população começa a diminuir (crescimento vegetativo negativo), gerando falta de mão de obra, queda do consumo e estagnação da economia."}
+ ]
+},
+{
+ t:"Crise migratória, refugiados, xenofobia e Schengen",
+ texto:`<p>Durante muito tempo, saíam mais pessoas da Europa do que entravam. Depois da 2ª Guerra, isso se inverteu: a Europa virou uma região de <b>atração de imigrantes</b>. Com os conflitos no Oriente Médio e na África, aumentou o número de <span class="destaque">refugiados</span> — pessoas que fogem de seus países para garantir a própria vida.</p>
+ <p>Muita gente fala numa "crise migratória", mas os dados oficiais mostram que <b>a maioria dos refugiados não vai para a Europa</b>, e sim para países vizinhos das áreas em guerra. Em 2022, a Turquia foi o maior receptor mundial de refugiados (mais de 4 milhões).</p>
+ <p>Mesmo assim, cresceu a <span class="destaque">xenofobia</span> (aversão aos estrangeiros) e a ascensão de políticos de extrema-direita, que fazem propostas contra os imigrantes. Esse tipo de pensamento é <span class="destaque">etnocêntrico</span>: acha que o próprio grupo social é superior aos outros. Por fim, o <b>Acordo de Schengen</b> (de 1985) permite a livre circulação de pessoas entre países da União Europeia, sem fiscalização nas fronteiras — mas a direita nacionalista ameaça esse acordo.</p>`,
+ perguntas:[
+  {q:"Como mudou o fluxo de migração na Europa depois da Segunda Guerra Mundial?",
+   modelo:"Antes saíam mais pessoas do que entravam; depois da guerra, a Europa passou a ser uma região de atração de imigrantes e refugiados."},
+  {q:"Os dados oficiais confirmam a ideia de que a Europa recebe a maioria dos refugiados do mundo? Explique.",
+   modelo:"Não. A maioria dos refugiados vai para países vizinhos das áreas em guerra, e não para a Europa. Em 2022, a Turquia foi o maior receptor mundial."},
+  {q:"O que é xenofobia e o que significa ter uma visão etnocêntrica?",
+   modelo:"Xenofobia é a aversão aos estrangeiros. Etnocêntrico é quem considera seu próprio grupo social superior aos demais."}
+ ]
+},
+{
+ t:"Ásia e Oceania: riqueza e pobreza no mesmo lugar",
+ texto:`<p>A Ásia e a Oceania têm países muito desenvolvidos e industrializados, como <b>Japão, Austrália, Nova Zelândia</b>, além de Índia, Coreia do Sul, Taiwan, Tailândia, Malásia, Indonésia e China. Mas, ao lado dessa riqueza, existem cenários de <span class="destaque">miséria e subdesenvolvimento</span>. Riqueza e pobreza convivem no mesmo território.</p>
+ <p>A pobreza asiática é grave: existem "bolsões" de pobreza tão preocupantes quanto os da África ou da América Latina. O principal motivo está na <b>formação histórico-social</b>: são regiões que foram devastadas pela exploração dos colonizadores europeus. Mesmo depois da independência, as classes dominantes locais não fizeram programas para reduzir a desigualdade.</p>
+ <p>Um exemplo é <b>Bangladesh</b>: tem mais de 160 milhões de pessoas numa área menor que o estado do Ceará, uma das maiores densidades populacionais do mundo. Fica na foz dos rios Ganges e Bramaputra, região das monções, e muita gente vive em moradias precárias na beira dos rios, sofrendo com inundações. Mesmo assim, houve progresso: a pobreza caiu de 71% (1971) para 9,6% (2022).</p>`,
+ perguntas:[
+  {q:"Por que dizemos que na Ásia e na Oceania a riqueza e a pobreza convivem?",
+   modelo:"Porque há países muito desenvolvidos (Japão, Austrália, Nova Zelândia, Coreia do Sul etc.) e, ao mesmo tempo, regiões de miséria e subdesenvolvimento no mesmo continente."},
+  {q:"Qual é o principal fator histórico que explica a pobreza extrema em partes da Ásia?",
+   modelo:"A formação histórico-social: regiões devastadas pela exploração dos colonizadores europeus, cujas classes dominantes, mesmo após a independência, não reduziram as desigualdades."},
+  {q:"O que torna Bangladesh um exemplo de vulnerabilidade socioambiental?",
+   modelo:"Sua altíssima densidade populacional, a localização na foz de grandes rios em região de monções, e as moradias precárias na beira dos rios sujeitas a inundações."}
+ ]
+},
+{
+ t:"A discriminação das castas na Índia",
+ texto:`<p>Na Índia existe um antigo sistema de divisão da sociedade chamado <span class="destaque">castas</span>, baseado na religião hindu. Segundo essa crença, cada grupo social representa uma parte do corpo do deus Brahma. Os grupos são: <b>Brâmanes</b> (sacerdotes e letrados, a cabeça), <b>Xátrias</b> (guerreiros, os braços), <b>Vaixás</b> (comerciantes, as pernas), <b>Sudras</b> (servos, camponeses, artesãos e operários, os pés) e os <b>Párias</b> (marginalizados e excluídos, a poeira do pé).</p>
+ <p>Nesse sistema, cada pessoa tinha mais ou menos direito ao trabalho, ao estudo e a bens conforme a casta em que nasceu. O sistema foi <b>oficialmente abolido em 1947</b>, com a independência do país e a criação de uma nova Constituição.</p>
+ <p>Mas a "pegadinha" é esta: mesmo proibido oficialmente, o sistema de castas <b>ainda é praticado</b> por muita gente, porque está enraizado na cultura há mais de 2.500 anos. Isso gera uma contradição: as castas <b>não permitem a mobilidade social</b> (subir de vida), que é uma condição básica do capitalismo, e assim acabam perpetuando a pobreza.</p>`,
+ perguntas:[
+  {q:"Como funciona o sistema de castas na Índia e em que religião ele se baseia?",
+   modelo:"É uma divisão rígida da sociedade em grupos (brâmanes, xátrias, vaixás, sudras e párias), baseada na religião hindu, em que cada grupo representa uma parte do deus Brahma e tem mais ou menos direitos."},
+  {q:"Quando o sistema de castas foi oficialmente abolido? Ele deixou de existir na prática?",
+   modelo:"Foi oficialmente abolido em 1947, com a independência e a nova Constituição, mas continua sendo praticado, pois está enraizado na cultura há mais de 2.500 anos."},
+  {q:"Qual é a contradição entre a cultura das castas e o desenvolvimento capitalista da Índia?",
+   modelo:"As castas impedem a mobilidade social (subir de vida), que é básica no capitalismo, perpetuando situações de pobreza."}
+ ]
+},
+{
+ t:"A questão dos aborígenes na Austrália",
+ texto:`<p>Os <span class="destaque">aborígenes</span> são os povos originários da Austrália. Quando os britânicos começaram a ocupar o território, em 1788, havia cerca de 300 a 400 mil aborígenes. Eles viviam principalmente no sudeste, região mais fértil, perto do Rio Murray. Com a colonização, foram empurrados para as ilhas ao norte, a região central seca e desértica e as periferias das grandes cidades.</p>
+ <p>Os aborígenes foram vítimas de <b>genocídio e preconceito</b> desde o século XVIII. Hoje trabalham muito com artesanato, mas o preconceito dificulta que consigam emprego. Um dado impressionante mostra a desigualdade: cerca de <b>um quarto da população carcerária</b> da Austrália é formada por aborígenes.</p>
+ <p>Em <b>2008</b>, o governo australiano iniciou um processo de reconhecimento das atrocidades cometidas e passou a devolver alguns territórios aos aborígenes. Porém, não houve um pedido formal de desculpas com indenização (isso geraria pagamentos milionários), e ainda existe conflito entre as tradições aborígenes e a indústria do turismo.</p>`,
+ perguntas:[
+  {q:"Quem são os aborígenes e o que aconteceu com eles a partir da colonização britânica (1788)?",
+   modelo:"São os povos originários da Austrália. Com a colonização foram vítimas de genocídio e preconceito e empurrados do sudeste fértil para ilhas do norte, o interior desértico e as periferias das cidades."},
+  {q:"Cite um dado que mostra a desigualdade sofrida pelos aborígenes hoje.",
+   modelo:"Cerca de um quarto da população carcerária da Austrália é formada por aborígenes; além disso, o preconceito dificulta que consigam emprego."},
+  {q:"Como o governo australiano tem agido em relação aos aborígenes nas últimas décadas?",
+   modelo:"Em 2008 iniciou o reconhecimento das atrocidades e a devolução de territórios, mas não fez pedido formal de desculpas com indenização, e ainda há conflito com a indústria do turismo."}
+ ]
+},
+{
+ t:"Contrastes regionais e exploração do trabalho",
+ texto:`<p>Na Ásia e na Oceania, os contrastes aparecem tanto <b>entre países</b> quanto <b>dentro de um mesmo país</b>. As grandes metrópoles do Leste Asiático (Japão, China, Coreia do Sul) têm padrão de vida muito diferente das ilhas pobres da Oceania. Dentro da China, existem metrópoles supertecnológicas e, ao mesmo tempo, regiões do interior onde as pessoas vivem quase como antes da Revolução de 1949. <b>Japão e Nova Zelândia</b> são exceções, com bons padrões de desenvolvimento para quase toda a população.</p>
+ <p>Alguns países ostentam o poder econômico com obras grandiosas, como as <b>ilhas artificiais em Dubai</b> (Emirados Árabes) e o <b>Marina Bay Sands</b> em Cingapura. Mas essa opulência esconde as péssimas condições de trabalho de muita gente.</p>
+ <p>A <span class="destaque">exploração da mão de obra</span> é uma prática comum: há denúncias de trabalho infantil e trabalho semiescravo em fábricas que produzem para grandes empresas mundiais. Segundo a Unicef (2023), <b>160 milhões de crianças</b> estão em situação de trabalho infantil no mundo, e as regiões da África, Ásia e Pacífico respondem por quase 9 em cada 10 dessas crianças.</p>`,
+ perguntas:[
+  {q:"Explique como os contrastes na Ásia aparecem dentro de um mesmo país, usando a China como exemplo.",
+   modelo:"Na China há metrópoles supertecnológicas e, ao mesmo tempo, regiões do interior onde as pessoas vivem de forma parecida com a de antes da Revolução de 1949."},
+  {q:"Que obras mostram a ostentação do poder econômico de alguns países asiáticos?",
+   modelo:"As ilhas artificiais de Dubai (Emirados Árabes) e o Marina Bay Sands, em Cingapura."},
+  {q:"O que os dados da Unicef (2023) revelam sobre o trabalho infantil no mundo?",
+   modelo:"Que 160 milhões de crianças estão em trabalho infantil, e que África, Ásia e Pacífico respondem por quase 9 em cada 10 dessas crianças."}
+ ]
+},
+{
+ t:"Desafios demográficos: China e Índia",
+ texto:`<p>Mais da metade da população do mundo vive na faixa entre o Himalaia e os oceanos Índico e Pacífico. Controlar o crescimento populacional é um grande desafio, principalmente para <b>China e Índia</b>, os países mais populosos.</p>
+ <p>A China adotou por décadas a severa <span class="destaque">política do filho único</span>: cada casal só podia ter um filho. Isso trouxe impactos graves: no interior, muitas famílias preferiam filhos homens (vistos como mais úteis no trabalho), e milhares de bebês do sexo feminino foram abandonados, gerando um desequilíbrio (mais homens que mulheres). Hoje, com a população envelhecendo, a China <b>flexibilizou</b> a política: em 2015 permitiu o 2º filho e, em 2021, até três filhos, criando creches e apoio às mães. Em 2020, nasceram só 12 milhões de bebês, o menor número desde 1960.</p>
+ <p>A <b>Índia</b> ultrapassou a China e se tornou o país mais populoso do planeta. Lá, as leis de controle de natalidade são menos rígidas (por exemplo, quem tem mais de dois filhos não pode fazer concurso público). Outros países, como Indonésia, Paquistão e Bangladesh, enfrentam a <b>superpopulação</b> ligada à pobreza, o que exige mais investimento em emprego, moradia, infraestrutura e saneamento.</p>`,
+ perguntas:[
+  {q:"O que foi a política do filho único da China e quais impactos sociais ela causou?",
+   modelo:"Era uma política severa em que cada casal só podia ter um filho. Causou a preferência por filhos homens e o abandono de bebês do sexo feminino, gerando desequilíbrio entre homens e mulheres."},
+  {q:"Por que a China flexibilizou essa política nos últimos anos?",
+   modelo:"Por causa do envelhecimento da população e da necessidade de repor a força de trabalho; passou a permitir 2 filhos (2015) e até 3 filhos (2021), com creches e apoio às mães."},
+  {q:"Qual país ultrapassou a China como o mais populoso, e como outros países associam superpopulação e pobreza?",
+   modelo:"A Índia se tornou o país mais populoso. Em países como Indonésia, Paquistão e Bangladesh a superpopulação está ligada à pobreza e exige mais investimento em emprego, moradia, infraestrutura e saneamento."}
+ ]
+}
+];
+
+const pegadinhas=[
+ "Não confunda: o <b>bloco capitalista</b> era liderado pelos EUA e o <b>socialista</b> pela União Soviética (URSS) — não troque os dois.",
+ "O Plano <b>Churchill-Marshall</b> ajudou a Europa, mas TAMBÉM beneficiou a economia dos EUA. Se a questão disser 'só ajudou a Europa', é pegadinha.",
+ "<b>Hegemônico</b> = quem domina; <b>Antagônico</b> = lados opostos. Não troque as definições.",
+ "Envelhecimento da Europa tem DUAS causas juntas: menos jovens (queda da fecundidade) E mais idosos (maior expectativa de vida).",
+ "A maioria dos refugiados do mundo vai para países VIZINHOS das guerras, NÃO para a Europa. Cuidado com a 'crise migratória' exagerada.",
+ "<b>Xenofobia</b> = aversão a estrangeiros; <b>Etnocentrismo</b> = achar seu grupo superior. São coisas relacionadas, mas não iguais.",
+ "As castas na Índia foram <b>abolidas oficialmente em 1947</b>, mas AINDA são praticadas na prática. Não diga que 'acabaram'.",
+ "Os aborígenes viviam originalmente no <b>sudeste</b> (região fértil) e foram empurrados para o interior e periferias — não o contrário.",
+ "Na política do filho único, a preferência por meninos gerou MAIS HOMENS que mulheres. Não inverta.",
+ "Quem é hoje o país mais populoso do mundo? A <b>Índia</b> (ultrapassou a China). Muitos livros antigos ainda dizem 'China'."
+];
+
+let estado=JSON.parse(localStorage.getItem(KEY)||'{}');
+if(!estado.resp) estado.resp={};
+if(!estado.conf) estado.conf={};
+if(!estado.aval) estado.aval={};
+if(!estado.finalAval) estado.finalAval='';
+
+function salvar(){estado.ts=new Date().toLocaleString('pt-BR');localStorage.setItem(KEY,JSON.stringify(estado));document.getElementById('salvo').textContent='Último salvamento: '+estado.ts;atualizarBarra();}
+function atualizarBarra(){
+  let feitos=0;for(let i=0;i<blocos.length;i++){if(estado.conf['b'+i])feitos++;}
+  document.getElementById('barra').style.width=(feitos/blocos.length*100)+'%';
+  document.getElementById('concluido').classList.toggle('show',feitos===blocos.length);
+}
+function blocoLiberado(i){return i===0 || estado.conf['b'+(i-1)];}
+
+function render(){
+  const cont=document.getElementById('blocos');cont.innerHTML='';
+  blocos.forEach((b,i)=>{
+    const lib=blocoLiberado(i);
+    const div=document.createElement('div');
+    div.className='bloco'+(lib?'':' travado');
+    let html=`<h2><span class="selo">Bloco ${i+1}</span> ${b.t} ${lib?'':'<span class="lock">🔒 conclua o bloco anterior</span>'}</h2>`;
+    if(lib){
+      html+=`<div class="texto">${b.texto}</div>`;
+      b.perguntas.forEach((p,j)=>{
+        const val=(estado.resp['b'+i]&&estado.resp['b'+i]['q'+j])||'';
+        html+=`<div class="perg">✍️ ${j+1}. ${p.q}</div>
+        <textarea id="ta_${i}_${j}" oninput="onInput(${i})" ${estado.conf['b'+i]?'readonly':''}>${val.replace(/</g,'&lt;')}</textarea>`;
+      });
+      if(!estado.conf['b'+i]){
+        html+=`<button class="btn btn-verde" id="btn_${i}" disabled onclick="conferir(${i})">🔎 Conferir minhas respostas</button>`;
+      }
+      html+=`<div class="modelo ${estado.conf['b'+i]?'show':''}" id="mod_${i}">
+        <h4>✅ Respostas modelo (compare com as suas)</h4>`;
+      b.perguntas.forEach((p,j)=>{html+=`<div class="ma"><b>${j+1}.</b> ${p.modelo}</div>`;});
+      html+=`<div class="autoav"><span>Como você foi?</span>
+        <span class="pill ${estado.aval['b'+i]==='ok'?'sel-ok':''}" onclick="avaliar(${i},'ok')">😃 Acertei</span>
+        <span class="pill ${estado.aval['b'+i]==='rev'?'sel-rev':''}" onclick="avaliar(${i},'rev')">📖 Preciso revisar</span></div>
+      </div>`;
+    }
+    div.innerHTML=html;cont.appendChild(div);
+  });
+  // final pegadinhas
+  const f=document.createElement('div');f.className='final';
+  let fh=`<h2>⚠️ 10 pegadinhas para não cair na prova</h2><ol>`;
+  pegadinhas.forEach(p=>fh+=`<li>${p}</li>`);
+  fh+=`</ol><div class="autoav"><span>Depois de ler as pegadinhas, como você se sente para a prova?</span>
+    <span class="pill ${estado.finalAval==='ok'?'sel-ok':''}" onclick="avaliarFinal('ok')">💪 Confiante</span>
+    <span class="pill ${estado.finalAval==='rev'?'sel-rev':''}" onclick="avaliarFinal('rev')">🔁 Vou revisar mais</span></div>`;
+  f.innerHTML=fh;cont.appendChild(f);
+  atualizarBarra();
+}
+function onInput(i){
+  if(!estado.resp['b'+i])estado.resp['b'+i]={};
+  let todas=true;
+  blocos[i].perguntas.forEach((p,j)=>{
+    const v=document.getElementById('ta_'+i+'_'+j).value;
+    estado.resp['b'+i]['q'+j]=v;
+    if(v.trim().length<3)todas=false;
+  });
+  const btn=document.getElementById('btn_'+i);if(btn)btn.disabled=!todas;
+  salvar();
+}
+function conferir(i){
+  estado.conf['b'+i]=true;salvar();render();
+  const el=document.getElementById('mod_'+i);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function avaliar(i,v){estado.aval['b'+i]=v;salvar();render();}
+function avaliarFinal(v){estado.finalAval=v;salvar();render();}
+function exportar(){
+  const blob=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='leitura_guiada_geografia_9ano_caps10-11.json';a.click();
+}
+function importar(e){
+  const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{estado=JSON.parse(r.result);salvar();render();alert('Diário importado com sucesso!');}catch(err){alert('Arquivo inválido.');}};
+  r.readAsText(f);
+}
+function zerar(){if(confirm('Tem certeza? Isso apaga todas as suas anotações deste material.')){estado={resp:{},conf:{},aval:{},finalAval:''};localStorage.removeItem(KEY);salvar();render();}}
+document.getElementById('salvo').textContent=estado.ts?('Último salvamento: '+estado.ts):'Ainda não salvo';
+render();
+</script>
+</body>
+</html>

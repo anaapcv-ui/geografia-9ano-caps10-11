@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz · Atlas do Explorador · Geografia 9º ano · Caps. 10 e 11</title>
+<style>
+  :root{
+    --papel:#f3e9d6; --papel2:#e8dabd; --papel3:#ded0af;
+    --tinta:#3a2f1e; --tinta2:#5c4a30;
+    --verde:#4b7a52; --verde-esc:#375c3d; --verde-cl:#e3efe0;
+    --azul:#2f6d8c; --azul-esc:#234f66; --vermelho:#b23a2e; --amarelo:#ffe27a;
+    --linha:#c9b78e; --cinza:#e7e2d6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papel);color:var(--tinta);
+    font-family:"Segoe UI",system-ui,sans-serif;font-size:18px;line-height:1.6}
+  .wrap{max-width:820px;margin:0 auto;padding:0 16px 80px}
+  header.top{background:linear-gradient(135deg,var(--azul-esc),var(--azul));color:#fdf7e8;
+    padding:26px 20px;border-bottom:6px solid var(--tinta)}
+  header.top .inner{max-width:820px;margin:0 auto}
+  .badge{display:inline-block;background:var(--amarelo);color:var(--tinta);font-weight:700;
+    padding:4px 12px;border-radius:20px;font-size:14px;letter-spacing:.5px}
+  header.top h1{font-family:Georgia,serif;margin:12px 0 4px;font-size:30px}
+  header.top p{margin:0;opacity:.95;font-size:16px}
+  .painel{background:var(--papel2);border:2px dashed var(--linha);border-radius:12px;padding:12px 16px;
+    margin:20px 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:15px}
+  .painel button{font:inherit;font-size:14px;cursor:pointer;border:2px solid var(--tinta2);
+    background:var(--papel);color:var(--tinta);border-radius:8px;padding:6px 12px}
+  .painel button:hover{background:var(--papel3)}
+  .aviso{background:var(--verde-cl);border:1px solid var(--verde);border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:16px}
+  .q{background:#fbf5e7;border:1px solid var(--linha);border-radius:10px;padding:18px 20px;margin:0 0 18px;box-shadow:2px 3px 0 rgba(58,47,30,.07)}
+  .q .num{background:var(--azul);color:#fff;font-weight:700;border-radius:6px;padding:2px 9px;font-size:14px}
+  .q .enun{font-weight:600;margin:8px 0 12px}
+  .opt{display:block;border:2px solid var(--linha);border-radius:9px;padding:10px 14px;margin:8px 0;cursor:pointer;background:#fffdf6}
+  .opt:hover{border-color:var(--azul)}
+  .opt input{margin-right:10px}
+  .opt.correta{background:var(--verde-cl);border-color:var(--verde)}
+  .opt.errada-marcada{background:#f7ded9;border-color:var(--vermelho)}
+  .fb{font-size:15px;margin-top:6px;display:none;padding-left:26px}
+  .opt.mostra .fb{display:block}
+  .fb.ok{color:var(--verde-esc)}.fb.no{color:#7d3128}
+  .btn{font:inherit;cursor:pointer;border:none;border-radius:10px;padding:13px 24px;font-weight:700;font-size:17px;color:#fff;background:var(--azul)}
+  .btn:disabled{background:#aab0a2;cursor:not-allowed}
+  .cod{background:var(--amarelo);border-radius:10px;padding:18px;margin:18px 0;text-align:center;display:none}
+  .cod.show{display:block}
+  .cod .codigo{font-size:30px;font-weight:800;letter-spacing:2px;font-family:Georgia,serif}
+  .liberar{background:var(--papel2);border:2px solid var(--linha);border-radius:10px;padding:16px;margin:16px 0;display:none}
+  .liberar.show{display:block}
+  .liberar input{font:inherit;font-size:18px;padding:8px 10px;border:2px solid var(--linha);border-radius:8px;text-transform:uppercase;width:150px}
+  .resultado{text-align:center;font-size:22px;font-weight:700;margin:10px 0}
+  a.nav{color:var(--azul);font-weight:700}
+  .rota{text-align:center;color:var(--tinta2);font-style:italic;margin-top:24px;font-size:15px}
+</style>
+</head>
+<body>
+<header class="top"><div class="inner">
+  <span class="badge">🧭 ATLAS DO EXPLORADOR · GEOGRAFIA · 9º ANO</span>
+  <h1>🎯 Quiz — Postos de Controle</h1>
+  <p>15 perguntas · Caps. 10 (Europa) e 11 (Ásia e Oceania)</p>
+</div></header>
+
+<div class="wrap">
+  <div class="painel">
+    <b>💾 Progresso salvo automaticamente.</b><span id="salvo">—</span>
+    <button onclick="exportar()">📥 Exportar</button>
+    <button onclick="document.getElementById('imp').click()">📤 Importar</button>
+    <input type="file" id="imp" accept="application/json" style="display:none" onchange="importar(event)">
+    <button onclick="zerar()">🗑️ Zerar tudo</button>
+  </div>
+  <div class="aviso">📌 Responda <b>todas as 15 questões</b> para liberar o envio. Depois de enviar, as respostas ficam travadas e você recebe um <b>código de liberação</b>. Digite o código para ver o gabarito comentado. Mostre o código para a sua mãe. 😉</div>
+
+  <div id="quiz"></div>
+
+  <button class="btn" id="enviar" disabled onclick="enviar()">✅ Enviar respostas</button>
+
+  <div class="cod" id="codbox">
+    <div>Seu código de liberação é:</div>
+    <div class="codigo" id="codigo">—</div>
+    <div style="font-size:15px">(mostre este código para sua mãe)</div>
+  </div>
+
+  <div class="liberar" id="liberar">
+    <b>🔓 Liberar gabarito comentado:</b><br>
+    Digite o código: <input id="codinput" maxlength="9" placeholder="MED-XX-YY">
+    <button class="btn" style="padding:8px 16px;font-size:15px" onclick="liberar()">Ver gabarito</button>
+    <div id="erroCod" style="color:var(--vermelho);margin-top:6px"></div>
+  </div>
+
+  <div class="resultado" id="resultado"></div>
+
+  <p class="rota">➡️ Próxima parada: <a class="nav" href="geografia_resumo.html">Resumo Interativo</a> · <a class="nav" href="index.html">Índice</a></p>
+</div>
+
+<script>
+const KEY='geo9_caps1011_quiz';
+const questoes=[
+ {e:"Durante a Guerra Fria, o mundo ficou dividido em dois blocos. Assinale a alternativa que identifica corretamente esses blocos e seus líderes.",
+  o:["Bloco capitalista, liderado pela União Soviética; bloco socialista, liderado pelos Estados Unidos.",
+     "Bloco capitalista, liderado pelos Estados Unidos; bloco socialista, liderado pela União Soviética.",
+     "Bloco democrático, liderado pela Inglaterra; bloco monárquico, liderado pela França.",
+     "Bloco europeu, liderado pela Alemanha; bloco asiático, liderado pela China."],
+  c:1,
+  fb:["Os líderes estão trocados: os EUA lideravam o capitalismo e a URSS o socialismo.",
+      "Correto! EUA à frente do bloco capitalista e URSS à frente do socialista.",
+      "A Guerra Fria não era entre democracia e monarquia, e sim capitalismo x socialismo.",
+      "A divisão era ideológica (capitalismo x socialismo), não por continentes."]},
+ {e:"A Guerra Fria, período de bipolarização entre os dois blocos, vigorou até:",
+  o:["o fim da Segunda Guerra Mundial, em 1945.",
+     "a criação da União Europeia, em 1993.",
+     "dezembro de 1991, com o colapso da União Soviética.",
+     "a queda do Muro de Berlim, em 1961."],
+  c:2,
+  fb:["1945 foi o INÍCIO desse período, não o fim.",
+      "A União Europeia surgiu depois; não marca o fim da Guerra Fria.",
+      "Correto! O colapso soviético, em dezembro de 1991, encerrou a Guerra Fria.",
+      "O Muro de Berlim caiu em 1989 (foi construído em 1961)."]},
+ {e:"No contexto da Guerra Fria, o termo 'hegemônico' se refere a:",
+  o:["algo relativo à autoridade que se sobrepõe às outras, ao poder que se exerce sobre uma nação.",
+     "lados opostos, com interesses divergentes entre si.",
+     "a mistura de culturas diferentes num mesmo país.",
+     "o respeito total entre as nações do mundo."],
+  c:0,
+  fb:["Correto! Hegemônico é quem exerce autoridade que se sobrepõe aos demais.",
+      "Essa é a definição de 'antagônico', não de 'hegemônico'.",
+      "Isso descreve pluralidade cultural, não hegemonia.",
+      "Hegemonia envolve poder/domínio, não respeito igualitário."]},
+ {e:"Quais foram os DOIS fatores determinantes para que os Estados Unidos adotassem o Plano Churchill-Marshall?",
+  o:["O medo do socialismo e a impossibilidade das potências europeias continuarem explorando suas colônias na África e na Ásia.",
+     "O desejo de iniciar uma nova guerra e a busca por petróleo no Oriente Médio.",
+     "A vontade de acabar com o capitalismo e de criar a União Europeia.",
+     "O aumento da população idosa e a falta de mão de obra nos Estados Unidos."],
+  c:0,
+  fb:["Correto! Medo do socialismo + fim da exploração das colônias europeias.",
+      "O plano buscava reconstrução e contenção do socialismo, não uma nova guerra.",
+      "O plano fortalecia o capitalismo; a UE veio muito depois.",
+      "Esses são desafios demográficos atuais, não motivos do plano."]},
+ {e:"Sobre o Plano Churchill-Marshall, é correto afirmar que ele:",
+  o:["prejudicou a economia dos Estados Unidos, que gastaram sem retorno.",
+     "ajudou a reconstruir a Europa e, ao mesmo tempo, beneficiou a economia dos próprios Estados Unidos.",
+     "foi um plano socialista de distribuição de renda entre os países.",
+     "serviu apenas para a Europa Oriental socialista."],
+  c:1,
+  fb:["Pelo contrário: boa parte do dinheiro voltava aos EUA em forma de compras.",
+      "Correto! Reconstruiu a Europa e movimentou a indústria americana (consumo em massa).",
+      "Era um plano capitalista, ligado aos EUA.",
+      "Beneficiou principalmente a Europa Ocidental capitalista."]},
+ {e:"A construção e a posterior demolição do Muro de Berlim, na Alemanha, simbolizaram:",
+  o:["a união permanente entre capitalismo e socialismo.",
+     "o início e o fim da divisão do mundo em dois blocos durante a Guerra Fria.",
+     "a criação do Acordo de Schengen.",
+     "o fim da imigração na Europa."],
+  c:1,
+  fb:["O muro representava separação, não união.",
+      "Correto! Sua construção (1961) marcou a divisão; sua queda (1989) e a reunificação alemã (1990), o fim dela.",
+      "Schengen é sobre livre circulação, assunto diferente.",
+      "O muro não tratava de imigração atual."]},
+ {e:"O envelhecimento demográfico da Europa é causado principalmente por:",
+  o:["aumento da natalidade e diminuição da expectativa de vida.",
+     "guerras e epidemias que matam os idosos.",
+     "redução do número de jovens (queda da fecundidade) somada ao aumento do número de idosos (maior expectativa de vida).",
+     "grande entrada de crianças imigrantes."],
+  c:2,
+  fb:["É o contrário: a natalidade CAI e a expectativa de vida AUMENTA.",
+      "Não são guerras/epidemias; são mudanças na natalidade e na longevidade.",
+      "Correto! Menos jovens + mais idosos = população envelhecida.",
+      "A imigração até ajudaria a rejuvenescer; não é causa do envelhecimento."]},
+ {e:"Para enfrentar o déficit previdenciário causado pelo envelhecimento, a principal medida adotada pelos países europeus é:",
+  o:["aumentar a idade mínima de aposentadoria e o tempo de contribuição.",
+     "proibir os idosos de se aposentarem.",
+     "acabar com o sistema de saúde público.",
+     "diminuir a idade mínima de aposentadoria para 50 anos."],
+  c:0,
+  fb:["Correto! A reforma eleva a idade mínima (rumo aos 67 anos) e o tempo de contribuição.",
+      "Ninguém é proibido de se aposentar; muda-se a idade mínima.",
+      "O desafio é justamente sustentar a saúde, não acabar com ela.",
+      "Reduzir a idade agravaria o problema — o correto é aumentá-la."]},
+ {e:"São exemplos de 'políticas natalistas' adotadas pelos governos europeus:",
+  o:["aumento de impostos sobre famílias com filhos.",
+     "aumento da licença-maternidade, criação da licença-paternidade e subsídios para criar os filhos.",
+     "proibição de casamentos entre jovens.",
+     "fechamento de creches e escolas."],
+  c:1,
+  fb:["Isso desestimularia ter filhos; políticas natalistas fazem o oposto.",
+      "Correto! São incentivos para as pessoas terem mais filhos.",
+      "Não há proibição de casamentos; busca-se incentivar a natalidade.",
+      "Fechar creches dificultaria ter filhos — não é natalista."]},
+ {e:"Quando a taxa de fecundidade fica abaixo de 2,1 filhos por mulher durante décadas, tende a ocorrer:",
+  o:["explosão populacional e superlotação.",
+     "aumento imediato do número de jovens.",
+     "redução populacional (crescimento vegetativo negativo), com escassez de mão de obra e estagnação econômica.",
+     "aumento da taxa de natalidade."],
+  c:2,
+  fb:["É o oposto: a população encolhe, não explode.",
+      "Com menos filhos, o número de jovens diminui.",
+      "Correto! Fecundidade baixa por muito tempo faz a população diminuir.",
+      "A fecundidade baixa reduz a natalidade, não aumenta."]},
+ {e:"Em 2022, o país que foi o MAIOR receptor mundial de refugiados foi:",
+  o:["a Alemanha.",
+     "a Turquia, com mais de 4 milhões de pessoas.",
+     "os Estados Unidos.",
+     "a França."],
+  c:1,
+  fb:["A Alemanha recebe muitos, mas não foi a maior receptora mundial.",
+      "Correto! A Turquia foi o maior receptor mundial de refugiados em 2022.",
+      "Os EUA não lideram esse ranking.",
+      "A França não é a maior receptora mundial de refugiados."]},
+ {e:"O Acordo de Schengen, criado em 1985, tem como principal característica:",
+  o:["proibir a entrada de qualquer estrangeiro na Europa.",
+     "unir as moedas de todos os países do mundo.",
+     "permitir a livre circulação de pessoas entre países da União Europeia, sem fiscalização nas fronteiras.",
+     "criar um exército único para a Europa."],
+  c:2,
+  fb:["Schengen facilita a circulação, não a proíbe.",
+      "Schengen trata de circulação de pessoas, não de moeda.",
+      "Correto! É a livre circulação de pessoas dentro do bloco.",
+      "Não se trata de exército, e sim de fronteiras abertas."]},
+ {e:"Sobre o sistema de castas na Índia, é correto afirmar que:",
+  o:["baseia-se na religião hindu, foi oficialmente abolido em 1947, mas ainda é praticado na cultura.",
+     "foi criado no ano 2000 e é apoiado pelo governo atual.",
+     "não tem relação com religião e garante mobilidade social.",
+     "é praticado apenas pelos aborígenes da Austrália."],
+  c:0,
+  fb:["Correto! Base hindu, abolido oficialmente em 1947, mas ainda praticado.",
+      "É um sistema milenar (mais de 2.500 anos), não recente.",
+      "Ele se baseia na religião hindu e IMPEDE a mobilidade social.",
+      "Castas são da Índia; aborígenes são da Austrália."]},
+ {e:"A respeito dos aborígenes da Austrália, assinale a alternativa correta:",
+  o:["chegaram ao país junto com os britânicos em 1788.",
+     "são os povos originários; sofreram genocídio desde a colonização britânica (1788) e hoje representam cerca de um quarto da população carcerária do país.",
+     "formam hoje a maioria rica da população australiana.",
+     "nunca sofreram qualquer tipo de preconceito."],
+  c:1,
+  fb:["Os aborígenes já viviam lá; os britânicos é que chegaram em 1788.",
+      "Correto! Povos originários, vítimas de genocídio e de forte desigualdade (1/4 dos presos).",
+      "Ao contrário: enfrentam pobreza e preconceito.",
+      "Sofreram (e sofrem) muito preconceito e violência."]},
+ {e:"Sobre a política do filho único da China e a demografia asiática, é correto afirmar que:",
+  o:["ela aumentou o número de mulheres em relação ao de homens.",
+     "gerou preferência por filhos homens e desequilíbrio populacional; hoje foi flexibilizada, e a Índia se tornou o país mais populoso do mundo.",
+     "continua rígida, permitindo apenas um filho por casal até hoje.",
+     "fez a população chinesa crescer de forma explosiva."],
+  c:1,
+  fb:["Foi o contrário: sobraram mais homens que mulheres.",
+      "Correto! Preferência por meninos, desequilíbrio, flexibilização, e Índia hoje é a mais populosa.",
+      "A China flexibilizou: permitiu 2 filhos (2015) e até 3 (2021).",
+      "A política reduziu a natalidade; em 2020 nasceu o menor número de bebês desde 1960."]}
+];
+
+let estado=JSON.parse(localStorage.getItem(KEY)||'{}');
+if(!estado.resp)estado.resp={};
+if(estado.enviado===undefined)estado.enviado=false;
+if(!estado.codigo)estado.codigo='';
+if(estado.acertos===undefined)estado.acertos=0;
+if(estado.liberado===undefined)estado.liberado=false;
+
+function salvar(){estado.ts=new Date().toLocaleString('pt-BR');localStorage.setItem(KEY,JSON.stringify(estado));
+  document.getElementById('salvo').textContent='Último salvamento: '+estado.ts;}
+function letrasAleatorias(){const L='ABCDEFGHJKLMNPQRSTUVWXYZ';return L[Math.floor(Math.random()*L.length)]+L[Math.floor(Math.random()*L.length)];}
+
+function render(){
+  const c=document.getElementById('quiz');c.innerHTML='';
+  questoes.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q';
+    let h=`<span class="num">Questão ${i+1}</span><div class="enun">${q.e}</div>`;
+    q.o.forEach((op,j)=>{
+      const checked=estado.resp['q'+i]===j?'checked':'';
+      let cls='opt';
+      if(estado.liberado){
+        if(j===q.c)cls+=' correta mostra';
+        else if(estado.resp['q'+i]===j)cls+=' errada-marcada mostra';
+        else cls+=' mostra';
+      }
+      const fbcls=(j===q.c)?'fb ok':'fb no';
+      const fbtxt=estado.liberado?`<div class="${fbcls}">${j===q.c?'✔️ ':'✖️ '}${q.fb[j]}</div>`:'';
+      h+=`<label class="${cls}"><input type="radio" name="q${i}" ${checked} ${estado.enviado?'disabled':''} onchange="marcar(${i},${j})">${op}${fbtxt}</label>`;
+    });
+    div.innerHTML=h;c.appendChild(div);
+  });
+  const todas=questoes.every((q,i)=>estado.resp['q'+i]!==undefined);
+  document.getElementById('enviar').disabled=todas&&!estado.enviado?false:true;
+  document.getElementById('enviar').style.display=estado.enviado?'none':'inline-block';
+  if(estado.enviado){
+    document.getElementById('codbox').classList.add('show');
+    document.getElementById('codigo').textContent=estado.codigo;
+    document.getElementById('liberar').classList.toggle('show',!estado.liberado);
+  }
+  if(estado.liberado){
+    document.getElementById('resultado').textContent=`Você acertou ${estado.acertos} de ${questoes.length}! 🧭`;
+  }
+}
+function marcar(i,j){estado.resp['q'+i]=j;salvar();
+  const todas=questoes.every((q,k)=>estado.resp['q'+k]!==undefined);
+  document.getElementById('enviar').disabled=!todas;}
+function enviar(){
+  if(!questoes.every((q,i)=>estado.resp['q'+i]!==undefined)){alert('Responda todas as questões!');return;}
+  if(!confirm('Enviar as respostas? Depois de enviar, você não poderá mudá-las.'))return;
+  let ac=0;questoes.forEach((q,i)=>{if(estado.resp['q'+i]===q.c)ac++;});
+  estado.acertos=ac;estado.enviado=true;
+  estado.codigo='MED-'+String(ac).padStart(2,'0')+'-'+letrasAleatorias();
+  salvar();render();
+  document.getElementById('codbox').scrollIntoView({behavior:'smooth'});
+}
+function liberar(){
+  const v=document.getElementById('codinput').value.trim().toUpperCase();
+  if(v===estado.codigo){estado.liberado=true;salvar();render();
+    document.getElementById('resultado').scrollIntoView({behavior:'smooth'});}
+  else{document.getElementById('erroCod').textContent='Código incorreto. Confira com a sua mãe. 🙂';}
+}
+function exportar(){const b=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='quiz_geografia_9ano_caps10-11.json';a.click();}
+function importar(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{estado=JSON.parse(r.result);salvar();render();alert('Importado!');}catch(err){alert('Arquivo inválido.');}};r.readAsText(f);}
+function zerar(){if(confirm('Apagar tudo e refazer o quiz do zero?')){estado={resp:{},enviado:false,codigo:'',acertos:0,liberado:false};localStorage.removeItem(KEY);salvar();render();}}
+document.getElementById('salvo').textContent=estado.ts?('Último salvamento: '+estado.ts):'Ainda não salvo';
+render();
+</script>
+</body>
+</html>

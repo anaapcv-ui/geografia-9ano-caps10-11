@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulado · Atlas do Explorador · Geografia 9º ano · Caps. 10 e 11</title>
+<style>
+  :root{
+    --papel:#f3e9d6; --papel2:#e8dabd; --papel3:#ded0af;
+    --tinta:#3a2f1e; --tinta2:#5c4a30;
+    --verde:#4b7a52; --verde-cl:#e3efe0;
+    --azul:#2f6d8c; --azul-esc:#1e3f52; --vermelho:#b23a2e; --amarelo:#ffe27a;
+    --linha:#c9b78e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papel);color:var(--tinta);
+    font-family:"Segoe UI",system-ui,sans-serif;font-size:18px;line-height:1.6}
+  .wrap{max-width:820px;margin:0 auto;padding:0 16px 90px}
+  header.top{background:var(--azul-esc);color:#fdf7e8;padding:24px 20px;border-bottom:8px solid var(--vermelho)}
+  header.top .inner{max-width:820px;margin:0 auto}
+  .badge{display:inline-block;background:var(--amarelo);color:var(--tinta);font-weight:700;padding:4px 12px;border-radius:20px;font-size:14px;letter-spacing:.5px}
+  header.top h1{font-family:Georgia,serif;margin:12px 0 4px;font-size:30px}
+  header.top p{margin:0;opacity:.95;font-size:16px}
+  .painel{background:var(--papel2);border:2px dashed var(--linha);border-radius:12px;padding:12px 16px;margin:20px 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:15px}
+  .painel button{font:inherit;font-size:14px;cursor:pointer;border:2px solid var(--tinta2);background:var(--papel);color:var(--tinta);border-radius:8px;padding:6px 12px}
+  .painel button:hover{background:var(--papel3)}
+  .aviso{background:#fbeaea;border:1px solid var(--vermelho);border-radius:10px;padding:12px 16px;margin:0 0 18px;font-size:16px}
+  .tag{display:inline-block;font-size:12px;font-weight:700;color:#fff;border-radius:5px;padding:2px 8px;margin-left:6px;vertical-align:middle}
+  .t-me{background:var(--azul)}.t-rom{background:#7a5aa0}.t-som{background:#c07a2b}.t-disc{background:var(--verde)}
+  .q{background:#fbf5e7;border:1px solid var(--linha);border-radius:10px;padding:18px 20px;margin:0 0 18px;box-shadow:2px 3px 0 rgba(58,47,30,.07)}
+  .q .num{background:var(--azul-esc);color:#fff;font-weight:700;border-radius:6px;padding:2px 9px;font-size:14px}
+  .q .enun{font-weight:600;margin:8px 0 12px}
+  .afirmativas{margin:0 0 12px;padding-left:4px}
+  .afirmativas div{margin:6px 0}
+  .opt{display:block;border:2px solid var(--linha);border-radius:9px;padding:10px 14px;margin:8px 0;cursor:pointer;background:#fffdf6}
+  .opt:hover{border-color:var(--azul)}
+  .opt input{margin-right:10px}
+  .opt.correta{background:var(--verde-cl);border-color:var(--verde)}
+  .opt.errada-marcada{background:#f7ded9;border-color:var(--vermelho)}
+  .fb{font-size:15px;margin-top:6px;display:none;padding-left:26px}
+  .opt.mostra .fb{display:block}
+  .fb.ok{color:#33623b}.fb.no{color:#7d3128}
+  .somin{font:inherit;font-size:18px;width:90px;padding:8px;border:2px solid var(--linha);border-radius:8px;text-align:center}
+  .somitens{font-size:15px;background:var(--papel2);border-radius:8px;padding:10px 14px;margin:8px 0}
+  .somitens div{margin:5px 0}
+  .disc textarea{width:100%;min-height:110px;font:inherit;font-size:16px;padding:10px;border:2px solid var(--linha);border-radius:8px;background:#fffdf6}
+  .gabbox{margin-top:8px;padding:12px 14px;border-radius:8px;display:none}
+  .gabbox.show{display:block}
+  .gab-ok{background:var(--verde-cl);border:1px solid var(--verde)}
+  .gab-info{background:#eef4f7;border:1px solid var(--azul)}
+  .btn{font:inherit;cursor:pointer;border:none;border-radius:10px;padding:14px 26px;font-weight:700;font-size:17px;color:#fff;background:var(--vermelho)}
+  .btn:disabled{background:#c3a9a5;cursor:not-allowed}
+  .cod{background:var(--amarelo);border-radius:10px;padding:18px;margin:18px 0;text-align:center;display:none}
+  .cod.show{display:block}
+  .cod .codigo{font-size:30px;font-weight:800;letter-spacing:2px;font-family:Georgia,serif}
+  .liberar{background:var(--papel2);border:2px solid var(--linha);border-radius:10px;padding:16px;margin:16px 0;display:none}
+  .liberar.show{display:block}
+  .liberar input{font:inherit;font-size:18px;padding:8px 10px;border:2px solid var(--linha);border-radius:8px;text-transform:uppercase;width:160px}
+  .resultado{text-align:center;font-size:22px;font-weight:700;margin:10px 0}
+  a.nav{color:var(--azul);font-weight:700}
+  .rota{text-align:center;color:var(--tinta2);font-style:italic;margin-top:24px;font-size:15px}
+</style>
+</head>
+<body>
+<header class="top"><div class="inner">
+  <span class="badge">🧭 ATLAS DO EXPLORADOR · GEOGRAFIA · 9º ANO</span>
+  <h1>🗺️ Simulado — Grande Expedição</h1>
+  <p>26 questões · Caps. 10 (Europa) e 11 (Ásia e Oceania)</p>
+</div></header>
+
+<div class="wrap">
+  <div class="painel">
+    <b>💾 Salvo automaticamente.</b><span id="salvo">—</span>
+    <button onclick="exportar()">📥 Exportar</button>
+    <button onclick="document.getElementById('imp').click()">📤 Importar</button>
+    <input type="file" id="imp" accept="application/json" style="display:none" onchange="importar(event)">
+    <button onclick="zerar()">🗑️ Zerar tudo</button>
+  </div>
+  <div class="aviso">📌 São <b>26 questões</b> de tipos variados: múltipla escolha, <b>números romanos</b>, <b>somatório</b> (some os itens corretos) e <b>1 discursiva</b> (corrigida pela mãe). Responda todas as objetivas para enviar. Depois, você recebe o <b>código SIM-XX-YY</b>; digite-o para ver o gabarito comentado.</div>
+
+  <div id="sim"></div>
+
+  <button class="btn" id="enviar" disabled onclick="enviar()">✅ Enviar simulado</button>
+
+  <div class="cod" id="codbox">
+    <div>Seu código de liberação é:</div>
+    <div class="codigo" id="codigo">—</div>
+    <div style="font-size:15px">(XX = número de acertos nas questões objetivas · mostre para a sua mãe)</div>
+  </div>
+
+  <div class="liberar" id="liberar">
+    <b>🔓 Liberar gabarito comentado:</b><br>
+    Digite o código: <input id="codinput" maxlength="9" placeholder="SIM-XX-YY">
+    <button class="btn" style="padding:8px 16px;font-size:15px;background:var(--azul-esc)" onclick="liberar()">Ver gabarito</button>
+    <div id="erroCod" style="color:var(--vermelho);margin-top:6px"></div>
+  </div>
+
+  <div class="resultado" id="resultado"></div>
+
+  <p class="rota">🏁 Você chegou ao fim da expedição! <a class="nav" href="index.html">Voltar ao índice</a></p>
+</div>
+
+<script>
+const KEY='geo9_caps1011_simulado';
+// tipos: me (múltipla escolha) | rom (romanos, mesma mecânica de me) | som (somatório) | disc (discursiva)
+const questoes=[
+ {tipo:"me",e:"(Cap.10) Após a Segunda Guerra Mundial, o mundo passou pela bipolarização da Guerra Fria. Sobre esse período, assinale a alternativa correta.",
+  o:["O bloco capitalista era liderado pela URSS e o socialista, pelos EUA.",
+     "Era a disputa de poder entre o bloco capitalista (EUA) e o bloco socialista (URSS), que durou até 1991.",
+     "Todos os países europeus eram socialistas nesse período.",
+     "A Guerra Fria terminou em 1945, logo após a Segunda Guerra."],
+  c:1,fb:["Os líderes estão trocados.","Correto! Capitalista (EUA) x socialista (URSS), até 1991.","A Europa estava dividida entre os dois blocos.","1945 foi o início, não o fim."]},
+ {tipo:"me",e:"(Cap.10) O Plano Churchill-Marshall pode ser entendido como um pacote de ajuda à Europa. Ao mesmo tempo, ele auxiliava indiretamente o reequilíbrio da economia estadunidense porque:",
+  o:["os europeus usavam o dinheiro para comprar produtos, máquinas e alimentos das indústrias dos Estados Unidos.",
+     "os Estados Unidos passaram a receber impostos de todos os países europeus.",
+     "a Europa enviava soldados para trabalhar nas fábricas americanas.",
+     "o plano transferia as fábricas europeias para o território dos EUA."],
+  c:0,fb:["Correto! O dinheiro voltava aos EUA em forma de compras (consumo em massa).","Não era cobrança de impostos.","Não havia envio de soldados-trabalhadores.","As fábricas não foram transferidas."]},
+ {tipo:"me",e:"(Cap.10) Os dois fatores determinantes para a adoção do Plano Churchill-Marshall foram:",
+  o:["o medo do socialismo e a impossibilidade de as potências europeias continuarem explorando suas colônias.",
+     "a falta de petróleo e o excesso de população idosa na Europa.",
+     "o fim da União Europeia e a criação da OTAN.",
+     "o desejo de espalhar o socialismo pelo mundo."],
+  c:0,fb:["Correto!","Não têm relação com a criação do plano.","A UE nem existia ainda.","O plano era anti-socialista."]},
+ {tipo:"me",e:"(Cap.10) A construção e a demolição do Muro de Berlim simbolizaram, respectivamente:",
+  o:["o fim e o início da Segunda Guerra Mundial.",
+     "a divisão do mundo em dois blocos e, depois, o fim dessa divisão com a reunificação da Alemanha (1990).",
+     "a criação e o fim do Acordo de Schengen.",
+     "o início e o fim das políticas natalistas."],
+  c:1,fb:["Não se refere à 2ª Guerra.","Correto!","Schengen é outro assunto.","Não tem relação com natalidade."]},
+ {tipo:"me",e:"(Cap.10 / Mackenzie-SP, adap.) A elevação da expectativa de vida aumentou a proporção de idosos na Europa, enquanto a baixa natalidade reduziu a proporção de jovens. Esses dois fenômenos combinados provocaram:",
+  o:["um crescimento explosivo da população europeia.",
+     "o chamado 'déficit previdenciário', agravado pela crise econômica.",
+     "o fim das aposentadorias em todos os países.",
+     "o aumento da taxa de fecundidade."],
+  c:1,fb:["A população encolhe, não explode.","Correto! Menos jovens + mais idosos = déficit previdenciário.","As aposentadorias continuam; muda-se a idade mínima.","A fecundidade permaneceu baixa."]},
+ {tipo:"me",e:"(Cap.10) Para enfrentar o desafio previdenciário, os países europeus estão adotando principalmente:",
+  o:["a redução da idade mínima de aposentadoria.",
+     "o fim do sistema público de saúde.",
+     "reformas que aumentam a idade mínima de aposentadoria (rumo aos 67 anos) e o tempo de contribuição.",
+     "a proibição de imigrantes."],
+  c:2,fb:["É o oposto: aumentam a idade.","Não é o fim da saúde.","Correto!","Imigração não é a medida previdenciária principal."]},
+ {tipo:"me",e:"(Cap.10 / UFJF-MG, adap.) 'Em 2009, a União Europeia tinha 1,59 filho por mulher; o mínimo para repor a população é 2,1. Em 2050, 37% dos europeus terão mais de 60 anos.' Essa situação demográfica resulta do(a):",
+  o:["aumento da população que migra para as antigas colônias africanas.",
+     "aumento da mortalidade infantil e do desemprego.",
+     "aumento da expectativa de vida e do declínio da taxa de fecundidade.",
+     "incremento das políticas do filho único."],
+  c:2,fb:["Não é migração para colônias.","Não é mortalidade infantil.","Correto! Mais expectativa de vida + menos fecundidade.","Filho único é política da China, não da Europa."]},
+ {tipo:"me",e:"(Cap.10) São exemplos de políticas natalistas adotadas na Europa, EXCETO:",
+  o:["aumento da licença-maternidade.",
+     "criação da licença-paternidade.",
+     "subsídios para ajudar nos custos de criação dos filhos.",
+     "aumento da idade mínima para se casar e ter filhos."],
+  c:3,fb:["É política natalista.","É política natalista.","É política natalista.","Correto! Essa NÃO é uma política natalista (a questão pede a exceção)."]},
+ {tipo:"me",e:"(Cap.10 / Unimontes-MG, adap.) A União Europeia discutiu a suspensão temporária do acordo que permite a livre circulação de pessoas sem apresentar passaporte nas fronteiras. Considerando o texto, é possível inferir que:",
+  o:["o cidadão europeu aceitará facilmente a medida, pois a livre circulação é recente.",
+     "as crises econômicas que afetaram alguns países e a desigualdade de desenvolvimento motivam essa discussão.",
+     "a livre circulação foi definida pelo Tratado de Frankfurt.",
+     "a união monetária antecedeu a livre circulação de pessoas."],
+  c:1,fb:["A livre circulação é valorizada e antiga (1985).","Correto! Crises e desigualdade motivam o debate sobre o Acordo de Schengen.","Não foi o 'Tratado de Frankfurt'.","A questão trata da circulação de pessoas, não da moeda."]},
+ {tipo:"me",e:"(Cap.10) Sobre a questão migratória na Europa atual, é correto afirmar que:",
+  o:["a maioria dos refugiados do mundo migra para os países europeus mais ricos.",
+     "dados oficiais mostram que a maioria dos refugiados vai para Estados vizinhos das áreas em guerra, e não para a Europa.",
+     "não existe xenofobia na Europa.",
+     "a Europa sempre foi uma região de atração de imigrantes, desde a Idade Média."],
+  c:1,fb:["Ao contrário do que se imagina.","Correto!","A xenofobia cresce em vários países.","A Europa passou a atrair imigrantes só depois da 2ª Guerra."]},
+ {tipo:"me",e:"(Cap.10) Em 2022, o maior receptor mundial de refugiados foi:",
+  o:["a Alemanha.","a Turquia (mais de 4 milhões de pessoas).","o Brasil.","a França."],
+  c:1,fb:["Recebe muitos, mas não é a maior.","Correto!","Não lidera esse ranking.","Não é a maior receptora mundial."]},
+ {tipo:"me",e:"(Cap.10) A visão de quem considera o próprio grupo social superior aos demais, base de posicionamentos preconceituosos contra imigrantes, é chamada de:",
+  o:["etnocêntrica.","hegemônica.","antagônica.","demográfica."],
+  c:0,fb:["Correto! Etnocentrismo.","Hegemônico = quem domina.","Antagônico = lados opostos.","Demográfico = relativo à população."]},
+ {tipo:"me",e:"(Cap.11) O principal fator que explica a pobreza extrema em várias regiões da Ásia é:",
+  o:["a ausência total de recursos naturais.",
+     "a formação histórico-social, marcada pela exploração dos colonizadores europeus e pela falta de programas de redução das desigualdades após a independência.",
+     "o excesso de investimento em tecnologia.",
+     "o clima frio que impede a agricultura."],
+  c:1,fb:["Muitas dessas regiões têm recursos.","Correto!","O problema não é excesso de tecnologia.","Não é uma questão climática de frio."]},
+ {tipo:"me",e:"(Cap.11) Bangladesh é citado como exemplo de vulnerabilidade socioambiental porque:",
+  o:["é um país rico e sem problemas de moradia.",
+     "possui altíssima densidade populacional, fica na foz de grandes rios (região de monções) e sofre inundações frequentes.",
+     "está localizado em pleno deserto, sem rios.",
+     "não tem contato com o mar."],
+  c:1,fb:["É um país com muitos desafios sociais.","Correto!","Fica em região de rios e monções, não deserto.","Está ligado ao oceano (foz de rios)."]},
+ {tipo:"me",e:"(Cap.11) Sobre o sistema de castas na Índia, é correto afirmar que:",
+  o:["baseia-se na religião hindu, foi oficialmente abolido em 1947, mas ainda é praticado por estar enraizado na cultura.",
+     "foi criado recentemente e é incentivado pelo governo.",
+     "garante total mobilidade social à população.",
+     "não tem qualquer relação com religião."],
+  c:0,fb:["Correto!","É um sistema milenar.","Ele IMPEDE a mobilidade social.","Baseia-se na religião hindu."]},
+ {tipo:"me",e:"(Cap.11) A grande contradição entre a cultura das castas e o modelo capitalista na Índia é que as castas:",
+  o:["incentivam o consumo em massa.",
+     "impedem a mobilidade social (subir de vida), que é uma condição básica do capitalismo, perpetuando a pobreza.",
+     "garantem emprego igual para todos.",
+     "acabaram completamente após 1947."],
+  c:1,fb:["Não têm relação com consumo em massa.","Correto!","Não garantem igualdade de emprego.","Continuam sendo praticadas."]},
+ {tipo:"me",e:"(Cap.11) A respeito dos aborígenes da Austrália, assinale a alternativa correta:",
+  o:["chegaram à Austrália junto com os colonizadores britânicos em 1788.",
+     "são povos originários, foram vítimas de genocídio desde 1788 e hoje representam cerca de um quarto da população carcerária do país.",
+     "formam a maioria rica da sociedade australiana.",
+     "nunca sofreram preconceito ou violência."],
+  c:1,fb:["Eles já viviam lá; os britânicos chegaram em 1788.","Correto!","Enfrentam pobreza e preconceito.","Sofreram e ainda sofrem."]},
+ {tipo:"me",e:"(Cap.11 / Etec-SP, adap.) Sobre o trabalho infantil, segundo dados da Unicef, é correto afirmar que:",
+  o:["é liberado pela ONU para crianças com menos de 14 anos.",
+     "é ilegal, viola os direitos humanos e dificulta a vida escolar e o desenvolvimento saudável da criança; em 2023 havia cerca de 160 milhões de crianças nessa situação.",
+     "é coordenado pela Unicef em todos os países.",
+     "foi totalmente eliminado do mundo."],
+  c:1,fb:["A ONU/Unicef combate o trabalho infantil.","Correto!","A Unicef combate, não coordena.","Ainda existem 160 milhões de crianças nessa situação."]},
+ {tipo:"me",e:"(Cap.11) Sobre a política do filho único, adotada pela China, é correto afirmar que:",
+  o:["aumentou a proporção de mulheres em relação aos homens.",
+     "gerou preferência por filhos homens e desequilíbrio populacional (mais homens); foi flexibilizada, permitindo 2 filhos (2015) e até 3 filhos (2021).",
+     "permanece rígida até hoje, com apenas um filho por casal.",
+     "fez a população chinesa crescer rapidamente."],
+  c:1,fb:["Foi o contrário: sobraram homens.","Correto!","Foi flexibilizada.","Reduziu a natalidade."]},
+ {tipo:"me",e:"(Cap.11) Atualmente, o país mais populoso do mundo é:",
+  o:["a China.","a Índia, que ultrapassou a China.","os Estados Unidos.","a Indonésia."],
+  c:1,fb:["A China foi ultrapassada.","Correto! A Índia é hoje o país mais populoso.","Não é o mais populoso.","É populoso, mas não o maior."]},
+ // ---- ROMANOS ----
+ {tipo:"rom",e:"(Cap.10) Sobre as migrações e os refugiados na Europa atual, analise as afirmativas:",
+  af:["I. Depois da Segunda Guerra Mundial, a Europa deixou de ser área de emigração e passou a atrair imigrantes.",
+      "II. A maioria dos refugiados do mundo se dirige aos países europeus mais ricos.",
+      "III. Os conflitos no Oriente Médio e na África aumentaram o número de refugiados.",
+      "IV. A xenofobia diminuiu na Europa por causa da chegada de imigrantes."],
+  o:["Apenas I e II.","Apenas I e III.","Apenas II e IV.","Apenas III e IV.","I, II e IV."],
+  c:1,fb:["II e IV estão erradas.","Correto! I e III são verdadeiras.","II e IV são falsas.","II é falsa; falta a I.","II e IV são falsas."]},
+ {tipo:"rom",e:"(Cap.11) Sobre os contrastes urbanos e sociais na Ásia, analise as afirmativas:",
+  af:["I. Nas grandes cidades asiáticas, bairros ricos e favelas convivem, como em Mumbai (o centro financeiro Nariman Point e a favela de Dharavi).",
+      "II. O crescimento dos centros urbanos garante, automaticamente, melhor qualidade de vida a todos os habitantes.",
+      "III. A especulação imobiliária torna a moradia cara e inacessível a boa parte da população.",
+      "IV. Japão e Nova Zelândia são exemplos de países da Oceania com péssimos indicadores sociais."],
+  o:["Apenas I e II.","Apenas II e IV.","Apenas I e III.","I, II e III.","Todas."],
+  c:2,fb:["II é falsa.","II e IV são falsas.","Correto! I e III são verdadeiras.","II é falsa.","II e IV são falsas."]},
+ {tipo:"rom",e:"(Cap.11) Sobre o desenvolvimento desigual na Ásia e na Oceania, analise as afirmativas:",
+  af:["I. Japão, Austrália e Nova Zelândia são exemplos de países desenvolvidos dessas regiões.",
+      "II. Papua-Nova Guiné apresenta um dos piores IDHs da Oceania.",
+      "III. Toda a Ásia é composta por países pobres e sem tecnologia.",
+      "IV. Países como Iêmen, Afeganistão e Síria têm baixos indicadores por enfrentarem guerras e conflitos."],
+  o:["Apenas I e III.","Apenas II e III.","Apenas I, II e IV.","Apenas III e IV.","Todas."],
+  c:2,fb:["III é falsa.","III é falsa.","Correto! I, II e IV são verdadeiras.","III é falsa.","III é falsa."]},
+ // ---- SOMATÓRIO ----
+ {tipo:"som",e:"(Cap.10 / UEPG, adap.) Sobre as migrações internacionais, some os itens CORRETOS:",
+  itens:[[1,"As migrações no continente africano ocorrem exclusivamente devido aos conflitos e guerras civis."],
+         [2,"Os EUA são um país de destaque em número de imigrantes em comparação ao resto do mundo."],
+         [4,"As migrações internacionais contemporâneas podem ter caráter econômico, com emigração a partir de países mais pobres."],
+         [8,"Países da Europa vivenciam a xenofobia praticada por alguns grupos, por causa da imigração ocorrida no continente."]],
+  soma:14,fb:{1:"01 (ERRADA): a palavra 'exclusivamente' torna falsa — há também motivos econômicos, ambientais etc.",2:"02 (CORRETA): os EUA se destacam no número de imigrantes.",4:"04 (CORRETA): migrações podem ter caráter econômico.",8:"08 (CORRETA): a xenofobia é praticada por alguns grupos na Europa."}},
+ {tipo:"som",e:"(Cap.10) Sobre a demografia e as políticas da Europa, some os itens CORRETOS:",
+  itens:[[1,"O envelhecimento da população europeia decorre da queda da fecundidade somada ao aumento da expectativa de vida."],
+         [2,"A idade mínima de aposentadoria na União Europeia tende a cair para 60 anos até 2030."],
+         [4,"Políticas natalistas incluem o aumento da licença-maternidade e a criação da licença-paternidade."],
+         [8,"O Acordo de Schengen permite a livre circulação de pessoas entre países da União Europeia."],
+         [16,"Quando a fecundidade fica abaixo de 2,1 filhos por mulher por décadas, a população tende a crescer rapidamente."]],
+  soma:13,fb:{1:"01 (CORRETA): menos jovens + mais idosos.",2:"02 (ERRADA): a idade tende a SUBIR (rumo aos 67 anos), não a cair.",4:"04 (CORRETA): são políticas natalistas.",8:"08 (CORRETA): Schengen = livre circulação.",16:"16 (ERRADA): a população tende a DIMINUIR, não a crescer."}},
+ // ---- DISCURSIVA ----
+ {tipo:"disc",e:"(Cap.11 · DISCURSIVA) Explique a contradição existente entre a cultura das castas e o desenvolvimento da Índia no modelo capitalista contemporâneo. (Escreva com suas palavras; sua mãe corrige com a resposta modelo.)",
+  modelo:"O sistema de castas divide a sociedade em grupos fixos, herdados no nascimento, que determinam o acesso de cada pessoa ao trabalho, ao estudo e a bens. Isso impede a mobilidade social — a possibilidade de a pessoa 'subir de vida' pelo próprio esforço. Como a mobilidade social é uma condição básica do capitalismo, as castas entram em contradição com esse modelo econômico e acabam perpetuando situações de pobreza, mesmo tendo sido oficialmente abolidas em 1947."}
+];
+
+let estado=JSON.parse(localStorage.getItem(KEY)||'{}');
+if(!estado.resp)estado.resp={};
+if(estado.enviado===undefined)estado.enviado=false;
+if(!estado.codigo)estado.codigo='';
+if(estado.acertos===undefined)estado.acertos=0;
+if(estado.liberado===undefined)estado.liberado=false;
+const autoTotal=questoes.filter(q=>q.tipo!=='disc').length;
+
+function salvar(){estado.ts=new Date().toLocaleString('pt-BR');localStorage.setItem(KEY,JSON.stringify(estado));
+  document.getElementById('salvo').textContent='Último salvamento: '+estado.ts;}
+function letras(){const L='ABCDEFGHJKLMNPQRSTUVWXYZ';return L[Math.floor(Math.random()*L.length)]+L[Math.floor(Math.random()*L.length)];}
+function tagHtml(t){return t==='me'?'<span class="tag t-me">múltipla escolha</span>':t==='rom'?'<span class="tag t-rom">números romanos</span>':t==='som'?'<span class="tag t-som">somatório</span>':'<span class="tag t-disc">discursiva</span>';}
+
+function render(){
+  const c=document.getElementById('sim');c.innerHTML='';
+  questoes.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q';
+    let h=`<span class="num">Questão ${i+1}</span>${tagHtml(q.tipo)}<div class="enun">${q.e}</div>`;
+    if(q.tipo==='me'||q.tipo==='rom'){
+      if(q.tipo==='rom'){h+='<div class="afirmativas">';q.af.forEach(a=>h+=`<div>${a}</div>`);h+='</div>';}
+      q.o.forEach((op,j)=>{
+        const checked=estado.resp['q'+i]===j?'checked':'';
+        let cls='opt';
+        if(estado.liberado){
+          if(j===q.c)cls+=' correta mostra';
+          else if(estado.resp['q'+i]===j)cls+=' errada-marcada mostra';
+          else cls+=' mostra';
+        }
+        const fbcls=(j===q.c)?'fb ok':'fb no';
+        const fbtxt=estado.liberado?`<div class="${fbcls}">${j===q.c?'✔️ ':'✖️ '}${q.fb[j]}</div>`:'';
+        h+=`<label class="${cls}"><input type="radio" name="q${i}" ${checked} ${estado.enviado?'disabled':''} onchange="marcar(${i},${j})">${op}${fbtxt}</label>`;
+      });
+    } else if(q.tipo==='som'){
+      h+='<div class="somitens">';q.itens.forEach(it=>h+=`<div><b>${String(it[0]).padStart(2,'0')}.</b> ${it[1]}</div>`);h+='</div>';
+      const val=estado.resp['q'+i]!==undefined?estado.resp['q'+i]:'';
+      h+=`Soma: <input class="somin" type="number" min="0" max="99" value="${val}" ${estado.enviado?'disabled':''} oninput="marcarSom(${i},this.value)">`;
+      if(estado.liberado){
+        const acertou=Number(estado.resp['q'+i])===q.soma;
+        h+=`<div class="gabbox show ${acertou?'gab-ok':'gab-info'}">${acertou?'✔️ Você acertou!':'✖️ Resposta correta: <b>'+q.soma+'</b>'}<br>`;
+        q.itens.forEach(it=>h+=`• ${q.fb[it[0]]}<br>`);h+=`</div>`;
+      }
+    } else if(q.tipo==='disc'){
+      const val=(estado.resp['q'+i]||'').replace(/</g,'&lt;');
+      h+=`<div class="disc"><textarea ${estado.enviado?'readonly':''} oninput="marcarDisc(${i},this.value)" placeholder="Escreva sua resposta aqui...">${val}</textarea></div>`;
+      if(estado.liberado){h+=`<div class="gabbox show gab-ok"><b>✅ Resposta modelo (para a mãe corrigir):</b><br>${q.modelo}</div>`;}
+    }
+    div.innerHTML=h;c.appendChild(div);
+  });
+  document.getElementById('enviar').style.display=estado.enviado?'none':'inline-block';
+  document.getElementById('enviar').disabled=!prontoParaEnviar();
+  if(estado.enviado){
+    document.getElementById('codbox').classList.add('show');
+    document.getElementById('codigo').textContent=estado.codigo;
+    document.getElementById('liberar').classList.toggle('show',!estado.liberado);
+  }
+  if(estado.liberado){
+    document.getElementById('resultado').textContent=`Você acertou ${estado.acertos} de ${autoTotal} questões objetivas! 🧭 (a discursiva é corrigida pela mãe)`;
+  }
+}
+function prontoParaEnviar(){
+  if(estado.enviado)return false;
+  return questoes.every((q,i)=>{
+    if(q.tipo==='disc')return true;
+    if(q.tipo==='som')return estado.resp['q'+i]!==undefined&&estado.resp['q'+i]!=='';
+    return estado.resp['q'+i]!==undefined;
+  });
+}
+function marcar(i,j){estado.resp['q'+i]=j;salvar();document.getElementById('enviar').disabled=!prontoParaEnviar();}
+function marcarSom(i,v){estado.resp['q'+i]=v===''?'':Number(v);salvar();document.getElementById('enviar').disabled=!prontoParaEnviar();}
+function marcarDisc(i,v){estado.resp['q'+i]=v;salvar();}
+function enviar(){
+  if(!prontoParaEnviar()){alert('Responda todas as questões objetivas (múltipla escolha, romanos e somatório) antes de enviar.');return;}
+  if(!confirm('Enviar o simulado? Depois de enviar, você não poderá mudar as respostas.'))return;
+  let ac=0;
+  questoes.forEach((q,i)=>{
+    if(q.tipo==='me'||q.tipo==='rom'){if(estado.resp['q'+i]===q.c)ac++;}
+    else if(q.tipo==='som'){if(Number(estado.resp['q'+i])===q.soma)ac++;}
+  });
+  estado.acertos=ac;estado.enviado=true;
+  estado.codigo='SIM-'+String(ac).padStart(2,'0')+'-'+letras();
+  salvar();render();
+  document.getElementById('codbox').scrollIntoView({behavior:'smooth'});
+}
+function liberar(){
+  const v=document.getElementById('codinput').value.trim().toUpperCase();
+  if(v===estado.codigo){estado.liberado=true;salvar();render();
+    document.getElementById('resultado').scrollIntoView({behavior:'smooth'});}
+  else{document.getElementById('erroCod').textContent='Código incorreto. Confira com a sua mãe. 🙂';}
+}
+function exportar(){const b=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='simulado_geografia_9ano_caps10-11.json';a.click();}
+function importar(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{estado=JSON.parse(r.result);salvar();render();alert('Importado!');}catch(err){alert('Arquivo inválido.');}};r.readAsText(f);}
+function zerar(){if(confirm('Apagar tudo e refazer o simulado do zero?')){estado={resp:{},enviado:false,codigo:'',acertos:0,liberado:false};localStorage.removeItem(KEY);salvar();render();}}
+document.getElementById('salvo').textContent=estado.ts?('Último salvamento: '+estado.ts):'Ainda não salvo';
+render();
+</script>
+</body>
+</html>

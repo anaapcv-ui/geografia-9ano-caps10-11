@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo · Atlas do Explorador · Geografia 9º ano · Caps. 10 e 11</title>
+<style>
+  :root{
+    --papel:#f3e9d6; --papel2:#e8dabd; --papel3:#ded0af;
+    --tinta:#3a2f1e; --tinta2:#5c4a30;
+    --verde:#4b7a52; --verde-esc:#375c3d; --verde-cl:#e3efe0;
+    --azul:#2f6d8c; --azul-esc:#234f66; --vermelho:#b23a2e; --amarelo:#ffe27a;
+    --linha:#c9b78e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papel);color:var(--tinta);
+    font-family:"Segoe UI",system-ui,sans-serif;font-size:18px;line-height:1.6}
+  .wrap{max-width:880px;margin:0 auto;padding:0 16px 80px}
+  header.top{background:linear-gradient(135deg,#6a4e2a,#8a6a38);color:#fdf7e8;padding:26px 20px;border-bottom:6px solid var(--tinta);
+    background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 12px,transparent 12px 24px)}
+  header.top .inner{max-width:880px;margin:0 auto}
+  .badge{display:inline-block;background:var(--amarelo);color:var(--tinta);font-weight:700;padding:4px 12px;border-radius:20px;font-size:14px;letter-spacing:.5px}
+  header.top h1{font-family:Georgia,serif;margin:12px 0 4px;font-size:30px}
+  header.top p{margin:0;opacity:.95;font-size:16px}
+  .painel{background:var(--papel2);border:2px dashed var(--linha);border-radius:12px;padding:12px 16px;margin:20px 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:15px}
+  .painel button{font:inherit;font-size:14px;cursor:pointer;border:2px solid var(--tinta2);background:var(--papel);color:var(--tinta);border-radius:8px;padding:6px 12px}
+  .painel button:hover{background:var(--papel3)}
+  .progress{height:14px;background:var(--papel3);border-radius:10px;overflow:hidden;margin:4px 0 24px;border:1px solid var(--linha)}
+  .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--verde),var(--azul));width:0;transition:.4s}
+  h2.sec{font-family:Georgia,serif;color:var(--azul-esc);border-bottom:3px solid var(--linha);padding-bottom:6px;margin:34px 0 14px;font-size:26px}
+  .card{background:#fbf5e7;border:1px solid var(--linha);border-left:8px solid var(--azul);border-radius:10px;padding:16px 20px;margin:0 0 16px;box-shadow:2px 3px 0 rgba(58,47,30,.07)}
+  .card h3{font-family:Georgia,serif;margin:0 0 6px;color:var(--tinta);font-size:21px}
+  .card ul{margin:8px 0 0;padding-left:20px}
+  .card li{margin:6px 0}
+  .card .rev{float:right;font-size:14px;cursor:pointer;border:2px solid var(--linha);border-radius:20px;padding:3px 12px;background:var(--papel);user-select:none}
+  .card .rev.on{background:var(--verde);color:#fff;border-color:var(--verde)}
+  b.k{background:var(--amarelo);padding:0 4px;border-radius:3px}
+  .postit{background:var(--amarelo);border-radius:4px;padding:12px 16px;margin:12px 0;box-shadow:2px 2px 5px rgba(0,0,0,.15);transform:rotate(-.5deg);font-size:16px}
+  .postit b{display:block;margin-bottom:3px}
+  .peg{background:#f7ded9;border:2px solid var(--vermelho);border-radius:9px;padding:12px 16px;margin:12px 0;font-size:16px}
+  .peg b{color:var(--vermelho)}
+  .flipwrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:10px 0}
+  .flip{background:transparent;height:170px;perspective:1000px;cursor:pointer}
+  .flip .inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+  .flip.flipped .inner{transform:rotateY(180deg)}
+  .flip .face{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;padding:14px;display:flex;flex-direction:column;justify-content:center;text-align:center;border:2px solid var(--linha)}
+  .flip .front{background:var(--azul);color:#fff}
+  .flip .front .big{font-size:20px;font-weight:800;font-family:Georgia,serif}
+  .flip .front small{opacity:.9;margin-top:6px}
+  .flip .back{background:#fffdf6;color:var(--tinta);transform:rotateY(180deg);font-size:15px;line-height:1.45}
+  .flip .back b{color:var(--azul-esc)}
+  .glos dt{font-weight:700;color:var(--azul-esc);margin-top:10px}
+  .glos dd{margin:2px 0 0}
+  .tabela{width:100%;border-collapse:collapse;margin:8px 0;font-size:15px}
+  .tabela th,.tabela td{border:1px solid var(--linha);padding:7px 9px;text-align:left}
+  .tabela th{background:var(--azul);color:#fff}
+  .notas{width:100%;min-height:70px;font:inherit;font-size:16px;padding:10px;border:2px solid var(--linha);border-radius:8px;background:#fffdf6;margin-top:6px}
+  a.nav{color:var(--azul);font-weight:700}
+  .rota{text-align:center;color:var(--tinta2);font-style:italic;margin-top:24px;font-size:15px}
+</style>
+</head>
+<body>
+<header class="top"><div class="inner">
+  <span class="badge">🧭 ATLAS DO EXPLORADOR · GEOGRAFIA · 9º ANO</span>
+  <h1>📜 Resumo — Cartas do Diário</h1>
+  <p>Unidade 4 · Cap. 10 (Europa) e Cap. 11 (Ásia e Oceania)</p>
+</div></header>
+
+<div class="wrap">
+  <div class="painel">
+    <b>💾 Salvo automaticamente.</b><span id="salvo">—</span>
+    <button onclick="exportar()">📥 Exportar</button>
+    <button onclick="document.getElementById('imp').click()">📤 Importar</button>
+    <input type="file" id="imp" accept="application/json" style="display:none" onchange="importar(event)">
+    <button onclick="zerar()">🗑️ Zerar tudo</button>
+  </div>
+  <p style="margin:0 0 4px">Marque cada carta como <b>revisada</b> conforme estuda. Clique nas cartas coloridas para virar. 🔄</p>
+  <div class="progress"><i id="barra"></i></div>
+
+  <h2 class="sec">🌍 Capítulo 10 — Panorama socioeconômico da Europa</h2>
+
+  <div class="card" data-rev="c1"><span class="rev" onclick="rev('c1',this)">revisar ✓</span>
+    <h3>1. A Guerra Fria e a Europa dividida</h3>
+    <ul>
+      <li>Após a 2ª Guerra: <b class="k">bipolarização</b> — bloco <b>capitalista</b> (EUA) x bloco <b>socialista</b> (URSS).</li>
+      <li>Durou até <b>dezembro de 1991</b> (colapso da URSS).</li>
+      <li><b>Europa Ocidental</b> = capitalista, livre iniciativa, apoio dos EUA. <b>Europa Oriental</b> = socialista, economia controlada pelo Estado.</li>
+      <li><b class="k">Hegemônico</b> = quem domina. <b class="k">Antagônico</b> = lados opostos.</li>
+    </ul>
+  </div>
+
+  <div class="card" data-rev="c2"><span class="rev" onclick="rev('c2',this)">revisar ✓</span>
+    <h3>2. Plano Churchill-Marshall</h3>
+    <ul>
+      <li>Ajuda dos <b>EUA + Inglaterra</b> para reconstruir a Europa (1947–1951, +10 bilhões de dólares).</li>
+      <li>Dois motivos: <b>medo do socialismo</b> + <b>fim da exploração das colônias</b> na África/Ásia.</li>
+      <li>Pegadinha: também <b>beneficiou os EUA</b> (europeus compravam produtos americanos = consumo em massa).</li>
+    </ul>
+  </div>
+
+  <div class="card" data-rev="c3"><span class="rev" onclick="rev('c3',this)">revisar ✓</span>
+    <h3>3. Fim da Guerra Fria e a Alemanha</h3>
+    <ul>
+      <li>Anos 1990: todos viram capitalistas, mas o Leste ficou atrasado → <b>abismo socioeconômico</b>.</li>
+      <li>Oeste explora o Leste (mão de obra barata); migrantes do Leste são <b>discriminados</b>.</li>
+      <li><b>Alemanha</b>: dividida pelo <b>Muro de Berlim</b> (1961); queda em 1989; reunificação em <b>outubro de 1990</b>.</li>
+    </ul>
+  </div>
+
+  <div class="card" data-rev="c4"><span class="rev" onclick="rev('c4',this)">revisar ✓</span>
+    <h3>4. Envelhecimento e previdência</h3>
+    <ul>
+      <li><b class="k">Envelhecimento demográfico</b> = menos jovens (queda da fecundidade) + mais idosos (maior expectativa de vida).</li>
+      <li>Problema: quem paga aposentadorias e saúde? (déficit previdenciário).</li>
+      <li>Solução: <b>reforma da previdência</b> — subir idade mínima (rumo aos <b>67 anos</b> até 2030) e tempo de contribuição.</li>
+    </ul>
+    <div class="tabela-wrap"><table class="tabela"><tr><th>País</th><th>Idade hoje</th><th>Projeção</th></tr>
+      <tr><td>França</td><td>60</td><td>67</td></tr>
+      <tr><td>Itália</td><td>63</td><td>67</td></tr>
+      <tr><td>Grécia</td><td>65</td><td>67</td></tr></table></div>
+  </div>
+
+  <div class="card" data-rev="c5"><span class="rev" onclick="rev('c5',this)">revisar ✓</span>
+    <h3>5. Políticas natalistas e redução populacional</h3>
+    <ul>
+      <li><b class="k">Políticas natalistas</b>: licença-maternidade maior, licença-paternidade, subsídios.</li>
+      <li>Nem sempre funcionam (jovens adiam filhos: carreira, custo de vida, mudanças sociais).</li>
+      <li>Fecundidade abaixo de <b>2,1 filhos/mulher</b> por décadas → <b>redução populacional</b> (crescimento vegetativo negativo) → falta de mão de obra e estagnação.</li>
+    </ul>
+  </div>
+
+  <div class="card" data-rev="c6"><span class="rev" onclick="rev('c6',this)">revisar ✓</span>
+    <h3>6. Migração, refugiados, xenofobia e Schengen</h3>
+    <ul>
+      <li>Depois da 2ª Guerra, a Europa virou região de <b>atração</b> de imigrantes e <b class="k">refugiados</b>.</li>
+      <li>Dados oficiais: a maioria dos refugiados vai para países <b>vizinhos</b> das guerras. Maior receptor mundial (2022): <b>Turquia</b> (+4 mi).</li>
+      <li><b class="k">Xenofobia</b> (aversão a estrangeiros) e extrema-direita crescem. Visão <b class="k">etnocêntrica</b> = achar o próprio grupo superior.</li>
+      <li><b>Acordo de Schengen</b> (1985): livre circulação de pessoas na UE, sem fiscalização nas fronteiras.</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">🌏 Capítulo 11 — Contrastes sociais na Ásia e Oceania</h2>
+
+  <div class="card" data-rev="c7"><span class="rev" onclick="rev('c7',this)">revisar ✓</span>
+    <h3>7. Pobreza asiática e suas causas</h3>
+    <ul>
+      <li>Ásia/Oceania: países ricos (Japão, Austrália, Nova Zelândia, Coreia do Sul...) e bolsões de <b>miséria</b>.</li>
+      <li>Causa principal da pobreza: <b>formação histórico-social</b> (exploração dos colonizadores europeus; classes dominantes não reduziram desigualdades).</li>
+      <li><b>Bangladesh</b>: densidade altíssima, foz de rios (monções), inundações. Pobreza caiu de 71% (1971) para 9,6% (2022).</li>
+    </ul>
+  </div>
+
+  <div class="card" data-rev="c8"><span class="rev" onclick="rev('c8',this)">revisar ✓</span>
+    <h3>8. Castas na Índia <small style="font-weight:normal;font-size:14px">(clique nas cartas para virar)</small></h3>
+    <p>Divisão da sociedade baseada na religião <b>hindu</b> (partes do deus Brahma). Oficialmente <b>abolida em 1947</b>, mas ainda praticada. Impede a mobilidade social → perpetua a pobreza.</p>
+    <div class="flipwrap">
+      <div class="flip" onclick="this.classList.toggle('flipped')"><div class="inner">
+        <div class="face front"><div class="big">Brâmanes</div><small>toque para ver</small></div>
+        <div class="face back"><b>Sacerdotes e letrados.</b> Nascidos da <b>cabeça</b> de Brahma. Casta mais alta.</div></div></div>
+      <div class="flip" onclick="this.classList.toggle('flipped')"><div class="inner">
+        <div class="face front"><div class="big">Xátrias</div><small>toque para ver</small></div>
+        <div class="face back"><b>Guerreiros.</b> Nascidos dos <b>braços</b> de Brahma.</div></div></div>
+      <div class="flip" onclick="this.classList.toggle('flipped')"><div class="inner">
+        <div class="face front"><div class="big">Vaixás</div><small>toque para ver</small></div>
+        <div class="face back"><b>Comerciantes.</b> Nascidos das <b>pernas</b> de Brahma.</div></div></div>
+      <div class="flip" onclick="this.classList.toggle('flipped')"><div class="inner">
+        <div class="face front"><div class="big">Sudras</div><small>toque para ver</small></div>
+        <div class="face back"><b>Servos, camponeses, artesãos e operários.</b> Nascidos dos <b>pés</b> de Brahma.</div></div></div>
+      <div class="flip" onclick="this.classList.toggle('flipped')"><div class="inner">
+        <div class="face front"><div class="big">Párias</div><small>toque para ver</small></div>
+        <div class="face back"><b>Marginalizados e excluídos.</b> Representam a <b>poeira do pé</b> de Brahma. Fora do sistema.</div></div></div>
+    </div>
+  </div>
+
+  <div class="card" data-rev="c9"><span class="rev" onclick="rev('c9',this)">revisar ✓</span>
+    <h3>9. Aborígenes na Austrália</h3>
+    <ul>
+      <li>Povos <b>originários</b>. Britânicos iniciaram a ocupação em <b>1788</b> (havia 300–400 mil aborígenes).</li>
+      <li>Viviam no <b>sudeste</b> (fértil); foram empurrados para ilhas do norte, interior desértico e periferias.</li>
+      <li>Vítimas de <b>genocídio e preconceito</b>. Hoje são cerca de <b>¼ da população carcerária</b> do país.</li>
+      <li>Em <b>2008</b>, o governo iniciou reconhecimento e devolução de terras (sem pedido formal de desculpas com indenização).</li>
+    </ul>
+  </div>
+
+  <div class="card" data-rev="c10"><span class="rev" onclick="rev('c10',this)">revisar ✓</span>
+    <h3>10. Contrastes regionais e trabalho</h3>
+    <ul>
+      <li>Contrastes <b>entre países</b> e <b>dentro</b> deles (ex.: China tem metrópoles tecnológicas e interior atrasado).</li>
+      <li><b>Japão e Nova Zelândia</b> = exceções (bom padrão para quase todos).</li>
+      <li>Ostentação: ilhas artificiais de <b>Dubai</b>, <b>Marina Bay Sands</b> (Cingapura).</li>
+      <li><b>Exploração do trabalho</b>: trabalho infantil e semiescravo. Unicef (2023): <b>160 milhões</b> de crianças em trabalho infantil; África, Ásia e Pacífico = ~9 em cada 10.</li>
+    </ul>
+  </div>
+
+  <div class="card" data-rev="c11"><span class="rev" onclick="rev('c11',this)">revisar ✓</span>
+    <h3>11. Desafios demográficos: China e Índia</h3>
+    <ul>
+      <li>China: <b class="k">política do filho único</b> (severa). Gerou preferência por meninos → <b>desequilíbrio</b> (mais homens).</li>
+      <li>Hoje <b>flexibilizada</b>: 2 filhos (2015), até 3 filhos (2021), creches e apoio às mães. Envelhecimento é o novo desafio.</li>
+      <li><b>Índia</b> ultrapassou a China e é o <b>país mais populoso</b> do mundo (leis menos rígidas).</li>
+      <li>Superpopulação ligada à pobreza: Indonésia, Paquistão, Bangladesh.</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">💛 Dicas de prova (post-its)</h2>
+  <div class="postit"><b>📌 Dica 1</b> Decore os pares: <b>capitalista = EUA</b>, <b>socialista = URSS</b>. E "hegemônico = domina / antagônico = oposto".</div>
+  <div class="postit"><b>📌 Dica 2</b> Sempre que aparecer "Plano Marshall", lembre: ajudou a Europa <b>E</b> os EUA ao mesmo tempo.</div>
+  <div class="postit"><b>📌 Dica 3</b> Envelhecimento = <b>duas</b> causas juntas: menos jovens + mais idosos.</div>
+  <div class="postit"><b>📌 Dica 4</b> Índia = país mais populoso hoje (ultrapassou a China). Castas abolidas em 1947, mas ainda praticadas.</div>
+
+  <h2 class="sec">⚠️ Alertas de pegadinha</h2>
+  <div class="peg"><b>Pegadinha:</b> a maioria dos refugiados do mundo NÃO vai para a Europa, e sim para países vizinhos das guerras.</div>
+  <div class="peg"><b>Pegadinha:</b> a política do filho único deixou MAIS HOMENS que mulheres (não o contrário).</div>
+  <div class="peg"><b>Pegadinha:</b> os aborígenes já viviam na Austrália; os britânicos chegaram em 1788.</div>
+
+  <h2 class="sec">📖 Glossário do explorador</h2>
+  <div class="card"><dl class="glos">
+    <dt>Bipolarização</dt><dd>Divisão do mundo em dois blocos opostos (capitalista e socialista) na Guerra Fria.</dd>
+    <dt>Hegemônico</dt><dd>Relativo à autoridade que se sobrepõe às outras; quem domina.</dd>
+    <dt>Antagônico</dt><dd>Lados opostos, com interesses divergentes.</dd>
+    <dt>Envelhecimento demográfico</dt><dd>Aumento da proporção de idosos e queda da de jovens numa população.</dd>
+    <dt>Fecundidade</dt><dd>Número médio de filhos por mulher.</dd>
+    <dt>Crescimento vegetativo negativo</dt><dd>Quando morrem mais pessoas do que nascem, e a população diminui.</dd>
+    <dt>Refugiado</dt><dd>Pessoa que foge do seu país para garantir a própria vida (guerra, perseguição).</dd>
+    <dt>Xenofobia</dt><dd>Aversão ou medo dos estrangeiros.</dd>
+    <dt>Etnocêntrico</dt><dd>Quem considera o próprio grupo social superior aos demais.</dd>
+    <dt>Casta</dt><dd>Grupo social fixo do sistema hindu na Índia, que a pessoa herda ao nascer.</dd>
+    <dt>Aborígene</dt><dd>Povo originário da Austrália.</dd>
+  </dl></div>
+
+  <h2 class="sec">✏️ Minhas anotações</h2>
+  <textarea class="notas" id="notas" placeholder="Escreva aqui o que você achou mais difícil ou quer relembrar..." oninput="salvarNotas()"></textarea>
+
+  <p class="rota">➡️ Próxima parada: <a class="nav" href="geografia_simulado.html">Simulado</a> · <a class="nav" href="index.html">Índice</a></p>
+</div>
+
+<script>
+const KEY='geo9_caps1011_resumo';
+let estado=JSON.parse(localStorage.getItem(KEY)||'{}');
+if(!estado.rev)estado.rev={};
+if(estado.notas===undefined)estado.notas='';
+const totalCards=11;
+function salvar(){estado.ts=new Date().toLocaleString('pt-BR');localStorage.setItem(KEY,JSON.stringify(estado));
+  document.getElementById('salvo').textContent='Último salvamento: '+estado.ts;atualizarBarra();}
+function atualizarBarra(){let n=Object.values(estado.rev).filter(Boolean).length;
+  document.getElementById('barra').style.width=(n/totalCards*100)+'%';}
+function rev(id,el){estado.rev[id]=!estado.rev[id];el.classList.toggle('on',estado.rev[id]);salvar();}
+function salvarNotas(){estado.notas=document.getElementById('notas').value;salvar();}
+function exportar(){const b=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='resumo_geografia_9ano_caps10-11.json';a.click();}
+function importar(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{estado=JSON.parse(r.result);aplicar();salvar();alert('Importado!');}catch(err){alert('Arquivo inválido.');}};r.readAsText(f);}
+function zerar(){if(confirm('Apagar marcações e anotações deste resumo?')){estado={rev:{},notas:''};localStorage.removeItem(KEY);aplicar();salvar();}}
+function aplicar(){
+  document.querySelectorAll('.card[data-rev]').forEach(c=>{const id=c.getAttribute('data-rev');
+    const el=c.querySelector('.rev');if(el)el.classList.toggle('on',!!estado.rev[id]);});
+  document.getElementById('notas').value=estado.notas||'';
+  atualizarBarra();
+}
+document.getElementById('salvo').textContent=estado.ts?('Último salvamento: '+estado.ts):'Ainda não salvo';
+aplicar();
+</script>
+</body>
+</html>
